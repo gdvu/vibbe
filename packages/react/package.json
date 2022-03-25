@@ -1,0 +1,72 @@
+{
+  "name": "@vibbe/react",
+  "version": "1.0.0-beta.0",
+  "description": "Vibbe is a simple, customizable and lightweight component library for building applications in Next.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.0",
+  "author": {
+    "name": "Moises Machuca",
+    "email": "rmoimv@gmail.com"
+  },
+  "keywords": [
+    "react",
+    "next",
+    "design",
+    "next-component",
+    "react-component",
+    "vibbe"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gdvu/vibbe",
+    "directory": "packages/vibbe-base"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:dev": "NODE_ENV=development rollup -c",
+    "build:prod": "NODE_ENV=production rollup -c"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "7.16.11",
+    "@babel/preset-react": "7.16.7",
+    "@babel/preset-typescript": "7.16.7",
+    "@rollup/plugin-babel": "5.3.1",
+    "@rollup/plugin-commonjs": "21.0.2",
+    "@rollup/plugin-node-resolve": "13.1.3",
+    "@rollup/plugin-replace": "4.0.0",
+    "@rollup/plugin-typescript": "8.3.1",
+    "@testing-library/jest-dom": "5.16.2",
+    "@testing-library/react": "12.1.3",
+    "@testing-library/user-event": "13.5.0",
+    "@types/babel__core": "^7",
+    "@types/babel__preset-env": "^7",
+    "@types/jest": "27.4.1",
+    "@types/react": "^17",
+    "@types/rollup-plugin-peer-deps-external": "^2",
+    "@types/styled-jsx": "^3.4.4",
+    "@types/testing-library__jest-dom": "^5",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-macros": "^3.1.0",
+    "csstype": "^3.0.11",
+    "jest": "27.5.1",
+    "react": "^17.0.2",
+    "rollup": "2.69.0",
+    "rollup-plugin-dts": "4.2.0",
+    "rollup-plugin-peer-deps-external": "2.2.4",
+    "rollup-plugin-terser": "7.0.2",
+    "tslib": "2.3.1",
+    "typescript": "4.6.2"
+  },
+  "peerDependencies": {
+    "react": "16.8.x",
+    "styled-jsx": "4.x.x"
+  },
+  "dependencies": {
+    "styled-jsx": "^5.0.1"
+  }
+}
