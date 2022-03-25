@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: ['plugin:react/recommended', 'standard', 'eslint-config-prettier'],
+  extends: ['plugin:react/recommended', 'standard', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -14,5 +14,14 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {}
+  rules: {
+    'react/prop-types': 'off'
+  },
+  settings: {
+    'import/core-modules': ['styled-jsx/css'],
+    react: { pragma: 'React', version: 'detect' }
+  },
+  globals: {
+    JSX: true
+  }
 };
