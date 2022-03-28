@@ -1,6 +1,6 @@
 {
   "name": "@vibbe/react",
-  "version": "1.0.0-beta.0",
+  "version": "2.0.0-alpha.0",
   "description": "Vibbe is a simple, customizable and lightweight component library for building applications in Next.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
