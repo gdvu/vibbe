@@ -1,14 +1,20 @@
 import { ButtonHTMLAttributes, ReactNode, Ref } from 'react';
 import { ColorProps, SizesProps } from '../utils/global.types';
 
-export interface BtnInlineCssProps {
-  fullWidth?: boolean;
-  shadow?: boolean | string;
-  radius?: boolean;
+// inline css props
+export interface BtnInlineCssOptionsProps {
+  width?: string;
+  shadow?: string;
+  radius?: string;
   color?: ColorProps;
 }
 
-export interface BtnBase {
+export interface BtnInlineCssProps {
+  inline: BtnInlineCssOptionsProps;
+}
+
+// base props
+export interface BtnBaseProps {
   type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
   variant?: 'contained' | 'outlined' | 'text';
   iconLeft?: ReactNode;
@@ -18,20 +24,13 @@ export interface BtnBase {
   sizes?: SizesProps;
 }
 
-export type BtnProps = BtnBase & BtnInlineCssProps;
+export type BtnProps = BtnBaseProps & BtnInlineCssOptionsProps;
 
 export type BtnAttrs = Omit<ButtonHTMLAttributes<unknown>, keyof BtnProps>;
 export type RefProps = Ref<HTMLButtonElement | null>;
 
-export interface StyledBtnOptionsProps {
-  button?: string;
-}
-
-export interface StyledBtnProps {
-  styled?: StyledBtnOptionsProps | undefined;
-}
-
-export interface StyledDefaultBtnProps {
+// styled props
+export interface BtnStyledOptionsProps {
   button?: string;
   variant?: {
     text: string;
@@ -40,8 +39,21 @@ export interface StyledDefaultBtnProps {
   };
 }
 
-export interface StyledBtnPropsAll {
-  inline: BtnInlineCssProps;
-  styled: StyledBtnOptionsProps | undefined;
-  theme: StyledDefaultBtnProps;
+export interface BtnStyledProps {
+  styled?: BtnStyledOptionsProps;
 }
+
+// default styled props
+export interface BtnDefaultStyledProps {
+  theme: BtnStyledOptionsProps;
+}
+
+// all styled props
+export type BtnStyledPropsAll = BtnInlineCssProps &
+  BtnStyledProps &
+  BtnDefaultStyledProps;
+
+// all btn props
+export type BtnPropsAll = BtnProps & BtnAttrs & BtnStyledProps;
+
+export type BtnDefaultAll = BtnProps & BtnDefaultStyledProps;

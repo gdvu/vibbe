@@ -4,94 +4,46 @@ import React, {
   useImperativeHandle,
   useRef
 } from 'react';
+import { mergePropsAndConfig } from '../utils';
+import { useBtnContext } from './button.context';
 import { getStyledButton } from './button.styled';
-import {
-  BtnAttrs,
-  BtnProps,
-  RefProps,
-  StyledBtnProps,
-  StyledBtnPropsAll,
-  StyledDefaultBtnProps
-} from './button.types';
-
-const defaultProps: BtnProps = {
-  type: 'button',
-  disabled: false,
-  fullWidth: false,
-  color: 'primary',
-  sizes: 'medium',
-  variant: 'contained'
-};
-
-const defaultTheme: StyledDefaultBtnProps = {
-  button: `
-    width: max-content;
-          min-width: 70px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 14px 24px;
-          font-size: 16px;
-          font-weight: 500;
-          font-family: var(--font-one);
-          letter-spacing: 0.5px;
-          box-sizing: border-box;
-          user-select: none;
-          outline: none;
-          cursor: pointer;
-  `,
-  variant: {
-    text: `
-      border: 0;
-      background-color: transparent;
-    `,
-    contained: `
-      border: 0;
-      border-radius: 5px;
-      color: #fff;
-    `,
-    outlined: `
-      border: 1px solid red};
-      border-radius: 5px;
-      background-color: transparent;
-      color: red;
-    `
-  }
-};
-
-type BtnPropsAll = BtnProps & BtnAttrs & StyledBtnProps;
+import { BtnPropsAll, BtnStyledPropsAll, RefProps } from './button.types';
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
   ({ ...props }, ref: RefProps) => {
     const btnRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => btnRef.current);
 
+    const propsDefault = useBtnContext();
+    const mergeProps = mergePropsAndConfig(props, propsDefault);
+
     const {
-      type = defaultProps.type,
-      variant = defaultProps.variant,
+      type,
+      variant,
       children,
-      styled = undefined,
+      styled,
       iconLeft,
       iconRight,
-      disabled = defaultProps.disabled,
-      fullWidth = defaultProps.fullWidth,
-      color = defaultProps.color,
+      disabled,
+      width,
+      color,
       radius,
       shadow,
+      theme,
       ...rest
-    } = props;
+    } = mergeProps;
 
     const inlineCss = {
       color,
-      fullWidth,
+      width,
       radius,
       shadow
     };
 
-    const styledButton: StyledBtnPropsAll = {
+    const styledButton: BtnStyledPropsAll = {
       inline: inlineCss,
       styled,
-      theme: defaultTheme
+      theme
     };
 
     const { className, styles } = getStyledButton(styledButton);
