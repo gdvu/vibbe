@@ -4,9 +4,8 @@ import React, {
   useImperativeHandle,
   useRef
 } from 'react';
-import { mergePropsAndConfig } from '../utils';
-import { useBtnContext } from './button.context';
-import { getStyledButton } from './button.styled';
+import { buttonMergeButtonAndConfig, defaultBtnAll } from './button.utils';
+import { GetStyledButton } from './button.styled';
 import { BtnPropsAll, BtnStyledPropsAll, RefProps } from './button.types';
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
@@ -14,14 +13,12 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const btnRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => btnRef.current);
 
-    const propsDefault = useBtnContext();
-    const mergeProps = mergePropsAndConfig(props, propsDefault);
+    const mergeProps = buttonMergeButtonAndConfig(props, defaultBtnAll);
 
     const {
       type,
       variant,
       children,
-      styled,
       iconLeft,
       iconRight,
       disabled,
@@ -30,6 +27,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       radius,
       shadow,
       theme,
+      jsx,
       ...rest
     } = mergeProps;
 
@@ -42,14 +40,33 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
 
     const styledButton: BtnStyledPropsAll = {
       inline: inlineCss,
-      styled,
       theme
     };
 
-    const { className, styles } = getStyledButton(styledButton);
+    const { className, styles } = GetStyledButton(styledButton);
 
     const isIconLeft = Boolean(iconLeft);
     const isIconRight = Boolean(iconRight);
+
+    if (jsx) {
+      return (
+        <>
+          <button
+            ref={btnRef}
+            type={type}
+            className={`btn btn--${variant} ${className}`}
+            disabled={disabled}
+            {...rest}
+          >
+            {isIconLeft && iconLeft}
+            {children}
+            {isIconRight && iconRight}
+          </button>
+          {styles}
+          <style jsx>{jsx}</style>
+        </>
+      );
+    }
 
     return (
       <>

@@ -39,8 +39,8 @@ export interface BtnStyledOptionsProps {
   };
 }
 
-export interface BtnStyledProps {
-  styled?: BtnStyledOptionsProps;
+export interface BtnStylesJSXProps {
+  jsx?: any;
 }
 
 // default styled props
@@ -49,11 +49,9 @@ export interface BtnDefaultStyledProps {
 }
 
 // all styled props
-export type BtnStyledPropsAll = BtnInlineCssProps &
-  BtnStyledProps &
-  BtnDefaultStyledProps;
+export type BtnStyledPropsAll = BtnInlineCssProps & BtnDefaultStyledProps;
 
 // all btn props
-export type BtnPropsAll = BtnProps & BtnAttrs & BtnStyledProps;
+export type BtnPropsAll = BtnProps & BtnAttrs & BtnStylesJSXProps;
 
 export type BtnDefaultAll = BtnProps & BtnDefaultStyledProps;
