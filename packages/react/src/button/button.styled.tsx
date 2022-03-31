@@ -7,12 +7,12 @@ import { defineSizesButton } from './button.utils';
 export const getStyledButton = (
   options: BtnStyledPropsAll,
   defaultTheme: {
+    prefix?: string;
     colors?: Colors;
     custom?: DefaultPropsOptions;
   }
 ) => {
-  const { colors, custom } = defaultTheme;
-  const prefix = '';
+  const { colors, custom, prefix } = defaultTheme;
 
   const { inline } = options;
 

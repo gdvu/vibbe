@@ -1,4 +1,11 @@
-import { ThemeProps } from '../theme/theme.types';
+import { ClassNameProps, ThemeProps } from '../theme/theme.types';
+
+const defineClassNamePrefix = (className?: ClassNameProps) => {
+  const classNameHasPrefix = className?.prefix;
+  const prefixName = className?.prefixName;
+  const classNamePrefix = classNameHasPrefix ? `${prefixName}-` : '';
+  return classNamePrefix;
+};
 
 const mergeThemes = (defaultTheme: ThemeProps, localTheme: ThemeProps) => {
   const {
@@ -87,4 +94,4 @@ const mergeThemes = (defaultTheme: ThemeProps, localTheme: ThemeProps) => {
   return theme;
 };
 
-export { mergeThemes };
+export { mergeThemes, defineClassNamePrefix };

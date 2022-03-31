@@ -8,19 +8,20 @@ import { btnProvider, buttonMergeButtonAndConfig } from './button.utils';
 import { getStyledButton } from './button.styled';
 import { BtnPropsAll, BtnStyledPropsAll, RefProps } from './button.types';
 import { useTheme } from '../theme/theme.context';
+import { defineClassNamePrefix } from '../utils';
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
   ({ ...props }, ref: RefProps) => {
-    const { colors, components } = useTheme();
-
-    const defautBtnAll = btnProvider(components?.button);
+    const { className: classNameConfig, colors, components } = useTheme();
 
     const btnRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => btnRef.current);
 
-    const customBtn = components?.button?.custom;
-
+    const defautBtnAll = btnProvider(components?.button);
     const mergeProps = buttonMergeButtonAndConfig(props, defautBtnAll);
+
+    const customBtn = components?.button?.custom;
+    const prefix = defineClassNamePrefix(classNameConfig);
 
     const {
       type,
@@ -36,6 +37,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       theme,
       jsx,
       size,
+      className: classNameProps,
       ...rest
     } = mergeProps;
 
@@ -53,6 +55,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     };
 
     const styleDefaultTheme = {
+      prefix,
       colors,
       custom: customBtn
     };
@@ -71,7 +74,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
           <button
             ref={btnRef}
             type={type}
-            className={`btn btn--${variant} ${className}`}
+            className={`${prefix}btn ${prefix}btn--${variant} ${className} ${classNameProps}`}
             disabled={disabled}
             {...rest}
           >
@@ -90,7 +93,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
         <button
           ref={btnRef}
           type={type}
-          className={`btn btn--${variant} ${className}`}
+          className={`${prefix}btn ${prefix}btn--${variant} ${className}`}
           disabled={disabled}
           {...rest}
         >
