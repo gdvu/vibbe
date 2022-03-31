@@ -7,6 +7,7 @@ export interface BtnInlineCssOptionsProps {
   shadow?: string;
   radius?: string;
   color?: ColorProps;
+  size?: SizesProps;
 }
 
 export interface BtnInlineCssProps {
@@ -21,7 +22,6 @@ export interface BtnBaseProps {
   iconRight?: ReactNode;
   disabled?: boolean;
   as?: keyof JSX.IntrinsicElements;
-  sizes?: SizesProps;
 }
 
 export type BtnProps = BtnBaseProps & BtnInlineCssOptionsProps;

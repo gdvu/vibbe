@@ -4,16 +4,21 @@ import React, {
   useImperativeHandle,
   useRef
 } from 'react';
-import { buttonMergeButtonAndConfig, defaultBtnAll } from './button.utils';
-import { GetStyledButton } from './button.styled';
+import { btnProvider, buttonMergeButtonAndConfig } from './button.utils';
+import { getStyledButton } from './button.styled';
 import { BtnPropsAll, BtnStyledPropsAll, RefProps } from './button.types';
+import { useTheme } from '../theme/theme.context';
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
   ({ ...props }, ref: RefProps) => {
+    const { colors, components } = useTheme();
+
+    const defautBtnAll = btnProvider(components?.button);
+
     const btnRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => btnRef.current);
 
-    const mergeProps = buttonMergeButtonAndConfig(props, defaultBtnAll);
+    const mergeProps = buttonMergeButtonAndConfig(props, defautBtnAll);
 
     const {
       type,
@@ -28,6 +33,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       shadow,
       theme,
       jsx,
+      size,
       ...rest
     } = mergeProps;
 
@@ -35,7 +41,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       color,
       width,
       radius,
-      shadow
+      shadow,
+      size
     };
 
     const styledButton: BtnStyledPropsAll = {
@@ -43,7 +50,14 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       theme
     };
 
-    const { className, styles } = GetStyledButton(styledButton);
+    const styleDefaultTheme = {
+      colors
+    };
+
+    const { className, styles } = getStyledButton(
+      styledButton,
+      styleDefaultTheme
+    );
 
     const isIconLeft = Boolean(iconLeft);
     const isIconRight = Boolean(iconRight);

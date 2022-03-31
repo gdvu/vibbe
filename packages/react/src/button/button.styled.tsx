@@ -1,19 +1,22 @@
 import css from 'styled-jsx/css';
 import { evalColor } from '../styles/main';
-import { useTheme } from '../theme/theme.context';
+import { Colors } from '../theme/theme.types';
 import { BtnStyledPropsAll } from './button.types';
 
-export const GetStyledButton = (options: BtnStyledPropsAll) => {
-  const { className, colors } = useTheme();
-  const isPrefix = className?.prefix;
-  const prefixName = className?.prefixName;
-  const prefix = isPrefix ? `${prefixName}-` : '';
+export const getStyledButton = (
+  options: BtnStyledPropsAll,
+  defaultTheme: {
+    colors?: Colors;
+  }
+) => {
+  const { colors } = defaultTheme;
+  const prefix = '';
 
   const { inline } = options;
 
   const { color, width, radius, shadow } = inline;
 
-  const colorDt = evalColor({ color, colors });
+  const definedColor = evalColor({ color, colors });
 
   return css.resolve`
     ${`.${prefix}btn`} {
@@ -36,21 +39,21 @@ export const GetStyledButton = (options: BtnStyledPropsAll) => {
     ${`.${prefix}btn--text`} {
       border: 0;
       background-color: transparent;
-      color: ${colorDt?.light};
+      color: ${definedColor?.light};
     }
 
     ${`.${prefix}btn--contained`} {
       border: 0;
       border-radius: 5px;
-      background-color: ${colorDt?.light};
-      color: ${colorDt?.light};
+      background-color: ${definedColor?.light};
+      color: ${definedColor?.contrastText};
     }
 
     ${`.${prefix}btn--outlined`} {
-      border: 1px solid ${colorDt?.light};
+      border: 1px solid ${definedColor?.light};
       border-radius: 5px;
       background-color: transparent;
-      color: ${colorDt?.contrastText};
+      color: ${definedColor?.light};
     }
 
     ${`.${prefix}btn`} {

@@ -1,14 +1,14 @@
-import defaultTheme from '../theme/theme.default';
+import { ThemeBtnOptions } from '../theme/theme.types';
 import { BtnDefaultAll, BtnPropsAll } from './button.types';
 
-const defaultButton = defaultTheme.components?.button;
-
-const defaultBtnAll = {
-  ...defaultButton?.props,
-  ...defaultButton?.shortcuts,
-  theme: {
-    ...defaultButton?.theme
-  }
+const btnProvider = (options?: ThemeBtnOptions) => {
+  return {
+    ...options?.props,
+    ...options?.shortcuts,
+    theme: {
+      ...options?.theme
+    }
+  };
 };
 
 const buttonMergeButtonAndConfig = (
@@ -21,4 +21,4 @@ const buttonMergeButtonAndConfig = (
   };
 };
 
-export { defaultBtnAll, buttonMergeButtonAndConfig };
+export { btnProvider, buttonMergeButtonAndConfig };
