@@ -18,6 +18,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const btnRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => btnRef.current);
 
+    const customBtn = components?.button?.custom;
+
     const mergeProps = buttonMergeButtonAndConfig(props, defautBtnAll);
 
     const {
@@ -51,7 +53,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     };
 
     const styleDefaultTheme = {
-      colors
+      colors,
+      custom: customBtn
     };
 
     const { className, styles } = getStyledButton(

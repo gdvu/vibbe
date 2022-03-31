@@ -1,32 +1,35 @@
 import css from 'styled-jsx/css';
 import { evalColor } from '../styles/main';
-import { Colors } from '../theme/theme.types';
+import { Colors, DefaultPropsOptions } from '../theme/theme.types';
 import { BtnStyledPropsAll } from './button.types';
+import { defineSizesButton } from './button.utils';
 
 export const getStyledButton = (
   options: BtnStyledPropsAll,
   defaultTheme: {
     colors?: Colors;
+    custom?: DefaultPropsOptions;
   }
 ) => {
-  const { colors } = defaultTheme;
+  const { colors, custom } = defaultTheme;
   const prefix = '';
 
   const { inline } = options;
 
-  const { color, width, radius, shadow } = inline;
+  const { color, width, radius, shadow, size } = inline;
 
   const definedColor = evalColor({ color, colors });
+  const definedSize = defineSizesButton(size, custom?.sizes);
 
   return css.resolve`
     ${`.${prefix}btn`} {
-      width: max-content;
-      min-width: 70px;
+      ${definedSize?.width ? `width: ${definedSize?.width};` : ''}
+      ${definedSize?.height ? `height: ${definedSize?.height};` : ''}
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 14px 24px;
-      font-size: 16px;
+      ${definedSize?.padding ? `padding: ${definedSize?.padding};` : ''}
+      ${definedSize?.fontSize ? `font-size: ${definedSize?.fontSize};` : ''}
       font-weight: 500;
       font-family: var(--font-one);
       letter-spacing: 0.5px;
@@ -44,14 +47,14 @@ export const getStyledButton = (
 
     ${`.${prefix}btn--contained`} {
       border: 0;
-      border-radius: 5px;
+      border-radius: 17px;
       background-color: ${definedColor?.light};
       color: ${definedColor?.contrastText};
     }
 
     ${`.${prefix}btn--outlined`} {
       border: 1px solid ${definedColor?.light};
-      border-radius: 5px;
+      border-radius: 17px;
       background-color: transparent;
       color: ${definedColor?.light};
     }
