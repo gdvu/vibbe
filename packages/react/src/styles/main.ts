@@ -1,8 +1,5 @@
-import cssStyled from 'styled-jsx/css';
 import { ColorsOptions } from '../theme/theme.types';
 import { evalColorPros } from './main.types';
-
-export const css = cssStyled;
 
 export const evalColor = (
   options: evalColorPros
@@ -23,5 +20,9 @@ export const evalColor = (
   }
   if (color === 'success') {
     return colors?.success;
+  }
+
+  if (color === 'danger') {
+    return colors?.danger;
   }
 };

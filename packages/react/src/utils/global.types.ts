@@ -4,6 +4,6 @@ export type ColorProps =
   | 'tertiary'
   | 'success'
   | 'warning'
-  | 'error';
+  | 'danger';
 
 export type SizesProps = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
