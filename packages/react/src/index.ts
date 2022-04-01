@@ -1,3 +1,4 @@
 import Button from './button';
+import createTheme, { ThemeProvider } from './theme';
 
-export { Button };
+export { Button, createTheme, ThemeProvider };
