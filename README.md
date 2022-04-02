@@ -7,6 +7,12 @@
 
 Vibbe is a simple, customizable and lightweight component library for building applications in NextJS.
 
+## Coming soon
+
+- Complete documentation.
+- 3 new components. (currently only 1 component available)
+- Beta version
+
 ## Installation
 
 Vibbe is available for npm & yarn
