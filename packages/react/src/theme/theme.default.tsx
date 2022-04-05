@@ -1,6 +1,6 @@
-import createTheme from './theme';
+import { createDefaultTheme } from './theme';
 
-const defaultTheme = createTheme({
+const defaultTheme = createDefaultTheme({
   colors: {
     primary: {
       light: '#3f48cc',
