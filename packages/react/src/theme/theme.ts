@@ -1,13 +1,10 @@
 import { ThemeProps } from './theme.types';
 
 const createTheme = (options: ThemeProps) => {
-  const { colors, fonts, components, className } = options;
+  const { colors } = options;
 
   const theme = {
-    className,
-    colors,
-    fonts,
-    components
+    colors
   };
 
   return theme;
