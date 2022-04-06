@@ -1,25 +1,30 @@
 import css from 'styled-jsx/css';
+import { SizesPropsConfig } from '../config/config.types';
 import { evalColor } from '../styles/main';
-import { Colors, DefaultPropsOptions } from '../theme/theme.types';
+import { Colors } from '../theme/theme.types';
+import { ColorProps, SizesProps } from '../utils/global.types';
 import { BtnStyledPropsAll } from './button.types';
 import { defineSizesButton } from './button.utils';
 
 export const getStyledButton = (
-  options: BtnStyledPropsAll,
-  defaultTheme: {
+  inlineCss: BtnStyledPropsAll,
+  defaultConfigCss: {
     prefix?: string;
     colors?: Colors;
-    custom?: DefaultPropsOptions;
+    sizes?: SizesPropsConfig;
+  },
+  basePropsCss: {
+    color?: ColorProps;
+    size?: SizesProps;
   }
 ) => {
-  const { colors, custom, prefix } = defaultTheme;
-
-  const { inline } = options;
-
-  const { color, width, radius, shadow, size } = inline;
+  const { colors, sizes, prefix } = defaultConfigCss;
+  const { inline } = inlineCss;
+  const { width, radius, shadow } = inline;
+  const { color, size } = basePropsCss;
 
   const definedColor = evalColor({ color, colors });
-  const definedSize = defineSizesButton(size, custom?.sizes);
+  const definedSize = defineSizesButton(size, sizes);
 
   return css.resolve`
     ${`.${prefix}btn`} {

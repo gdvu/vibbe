@@ -1,24 +1,16 @@
-import {
-  MeasurementsButtonProps,
-  SizesButtonOptionsProps,
-  ThemeBtnOptions
-} from '../theme/theme.types';
+import { SizesOptionsProps, SizesPropsConfig } from '../config/config.types';
 import { SizesProps } from '../utils/global.types';
-import { BtnDefaultAll, BtnPropsAll } from './button.types';
+import { BtnBaseProps, BtnPropsAll } from './button.types';
 
-const btnProvider = (options?: ThemeBtnOptions) => {
+const buttonDefaultProps = (options?: BtnBaseProps) => {
   return {
-    ...options?.props,
-    ...options?.shortcuts,
-    theme: {
-      ...options?.theme
-    }
+    ...options
   };
 };
 
 const buttonMergeButtonAndConfig = (
   props: BtnPropsAll,
-  config: BtnDefaultAll
+  config: BtnBaseProps
 ) => {
   return {
     ...config,
@@ -28,8 +20,8 @@ const buttonMergeButtonAndConfig = (
 
 const defineSizesButton = (
   sizes?: SizesProps,
-  measurements?: MeasurementsButtonProps
-): SizesButtonOptionsProps | undefined => {
+  measurements?: SizesPropsConfig
+): SizesOptionsProps | undefined => {
   if (sizes === 'xsmall') {
     return measurements?.xsmall;
   }
@@ -51,4 +43,4 @@ const defineSizesButton = (
   }
 };
 
-export { btnProvider, buttonMergeButtonAndConfig, defineSizesButton };
+export { buttonDefaultProps, buttonMergeButtonAndConfig, defineSizesButton };

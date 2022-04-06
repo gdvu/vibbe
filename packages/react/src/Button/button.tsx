@@ -4,23 +4,25 @@ import React, {
   useImperativeHandle,
   useRef
 } from 'react';
-import { btnProvider, buttonMergeButtonAndConfig } from './button.utils';
+import { buttonDefaultProps, buttonMergeButtonAndConfig } from './button.utils';
 import { getStyledButton } from './button.styled';
 import { BtnPropsAll, BtnStyledPropsAll, RefProps } from './button.types';
 import { useTheme } from '../theme/theme.context';
 import { defineClassNamePrefix } from '../utils';
+import { useConfig } from '../config/config.context';
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
   ({ ...props }, ref: RefProps) => {
-    const { className: classNameConfig, colors, components } = useTheme();
+    const { colors } = useTheme();
+    const { className: classNameConfig, components } = useConfig();
 
     const btnRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => btnRef.current);
 
-    const defautBtnAll = btnProvider(components?.button);
+    const defautBtnAll = buttonDefaultProps(components?.button?.propsDefault);
     const mergeProps = buttonMergeButtonAndConfig(props, defautBtnAll);
 
-    const customBtn = components?.button?.custom;
+    const configSizes = components?.button?.sizes;
     const prefix = defineClassNamePrefix(classNameConfig);
 
     const {
@@ -34,7 +36,6 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       color,
       radius,
       shadow,
-      theme,
       jsx,
       size,
       className: classNameProps,
@@ -42,27 +43,30 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     } = mergeProps;
 
     const inlineCss = {
-      color,
       width,
       radius,
-      shadow,
+      shadow
+    };
+
+    const basePropsCss = {
+      color,
       size
     };
 
     const styledButton: BtnStyledPropsAll = {
-      inline: inlineCss,
-      theme
+      inline: inlineCss
     };
 
-    const styleDefaultTheme = {
+    const defaultConfigCss = {
       prefix,
       colors,
-      custom: customBtn
+      sizes: configSizes
     };
 
     const { className, styles } = getStyledButton(
       styledButton,
-      styleDefaultTheme
+      defaultConfigCss,
+      basePropsCss
     );
 
     const isIconLeft = Boolean(iconLeft);
