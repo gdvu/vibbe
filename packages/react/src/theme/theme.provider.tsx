@@ -4,6 +4,7 @@ import configDefault from '../config/config.default';
 import { RootContext } from '../root/root.context';
 import rootDefault from '../root/root.default';
 import { ThemeContext } from './theme.context';
+import defaultTheme from './theme.default';
 import { ThemeProviderProps } from './theme.types';
 
 const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = props => {
@@ -15,7 +16,7 @@ const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = props => {
   } = props;
 
   const root = useMemo(() => localRoot ?? rootDefault, [localRoot]);
-  const theme = useMemo(() => localTheme, [localTheme]);
+  const theme = useMemo(() => localTheme ?? defaultTheme, [localTheme]);
   const config = useMemo(() => localConfig ?? configDefault, [localConfig]);
 
   return (
