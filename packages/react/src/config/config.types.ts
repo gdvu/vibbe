@@ -1,4 +1,4 @@
-import { BtnBaseProps } from '../button/button.types';
+import { BtnBaseProps } from '../Button/button.types';
 
 export interface ClassNameProps {
   prefix?: boolean;
@@ -13,7 +13,7 @@ export interface SizesOptionsProps {
   fontSize?: string;
 }
 
-export interface SizesProps {
+export interface SizesPropsConfig {
   xsmall?: SizesOptionsProps;
   small?: SizesOptionsProps;
   medium?: SizesOptionsProps;
@@ -23,7 +23,7 @@ export interface SizesProps {
 
 export interface ConfigButtonProps {
   propsDefault?: BtnBaseProps;
-  sizes?: SizesProps;
+  sizes?: SizesPropsConfig;
 }
 
 export interface ConfigProps {
