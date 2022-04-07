@@ -23,6 +23,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const mergeProps = buttonMergeButtonAndConfig(props, defautBtnAll);
 
     const configSizes = components?.button?.sizes;
+    const configDisabled = components?.button?.disabled;
+    const configStateCSS = components?.button?.state;
     const prefix = defineClassNamePrefix(classNameConfig);
 
     const {
@@ -60,7 +62,9 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const defaultConfigCss = {
       prefix,
       colors,
-      sizes: configSizes
+      sizes: configSizes,
+      disabled: configDisabled,
+      state: configStateCSS
     };
 
     const { className, styles } = getStyledButton(
@@ -73,7 +77,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const isIconRight = Boolean(iconRight);
 
     const isClassNameProps = classNameProps || '';
-    const classNames = `${prefix}btn ${prefix}btn--${variant} ${className} ${isClassNameProps}`;
+    const classDisabled = disabled ? `${prefix}btn-disabled` : '';
+    const classNames = `${prefix}btn ${prefix}btn--${variant} ${className} ${isClassNameProps} ${classDisabled}`;
 
     if (jsx) {
       return (

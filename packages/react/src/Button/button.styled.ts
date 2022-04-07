@@ -1,5 +1,9 @@
 import css from 'styled-jsx/css';
-import { SizesPropsConfig } from '../config/config.types';
+import {
+  DisabledPropsConfig,
+  ElementState,
+  SizesPropsConfig
+} from '../config/config.types';
 import { evalColor } from '../styles/main';
 import { Colors } from '../theme/theme.types';
 import { ColorProps, SizesProps } from '../utils/global.types';
@@ -12,13 +16,15 @@ export const getStyledButton = (
     prefix?: string;
     colors?: Colors;
     sizes?: SizesPropsConfig;
+    disabled?: DisabledPropsConfig;
+    state?: ElementState;
   },
   basePropsCss: {
     color?: ColorProps;
     size?: SizesProps;
   }
 ) => {
-  const { colors, sizes, prefix } = defaultConfigCss;
+  const { colors, sizes, prefix, disabled, state } = defaultConfigCss;
   const { inline } = inlineCss;
   const { width, radius, shadow } = inline;
   const { color, size } = basePropsCss;
@@ -64,10 +70,30 @@ export const getStyledButton = (
       color: ${definedColor?.light};
     }
 
+    ${`.${prefix}btn:hover`} {
+      ${!disabled?.cancelState ? state?.hover : ''}
+    }
+
+    ${`.${prefix}btn:active`} {
+      ${!disabled?.cancelState ? state?.active : ''}
+    }
+
+    ${`.${prefix}btn:focus`} {
+      ${!disabled?.cancelState ? state?.focus : ''}
+    }
+
+    ${`.${prefix}btn:visited`} {
+      ${!disabled?.cancelState ? state?.visited : ''}
+    }
+
     ${`.${prefix}btn`} {
       ${radius ? `border-radius: ${radius};` : ''}
       ${shadow ? `box-shadow: ${shadow};` : ''}
       ${width ? `width: ${width};` : ''}
+    }
+
+    ${`.${prefix}btn-disabled`} {
+      ${disabled?.jsx ?? ''}
     }
   `;
 };
