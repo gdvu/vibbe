@@ -21,9 +21,24 @@ export interface SizesPropsConfig {
   xlarge?: SizesOptionsProps;
 }
 
+export interface DisabledPropsConfig {
+  jsx?: string;
+  cancelState?: boolean;
+}
+
+export interface ElementState {
+  active?: string;
+  focus?: string;
+  target?: string;
+  hover?: string;
+  visited?: string;
+}
+
 export interface ConfigButtonProps {
   propsDefault?: BtnBaseProps;
   sizes?: SizesPropsConfig;
+  state?: ElementState;
+  disabled?: DisabledPropsConfig;
 }
 
 export interface ConfigProps {

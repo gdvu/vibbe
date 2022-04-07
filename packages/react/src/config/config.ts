@@ -38,6 +38,14 @@ const createConfig = (localConfig: ConfigProps) => {
             ...defaultComponents?.button?.sizes?.xlarge,
             ...components?.button?.sizes?.xlarge
           }
+        },
+        state: {
+          ...defaultComponents?.button?.state,
+          ...components?.button?.state
+        },
+        disabled: {
+          ...defaultComponents?.button?.disabled,
+          ...components?.button?.disabled
         }
       }
     }

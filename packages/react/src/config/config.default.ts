@@ -36,6 +36,22 @@ const configDefault = createDefaultConfig({
           padding: '20px 36px',
           fontSize: '16px'
         }
+      },
+      state: {
+        hover: `
+          opacity: 0.85;
+        `,
+        active: `
+          transform: scale(0.95);
+        `
+      },
+      disabled: {
+        jsx: `
+        cursor: no-drop;
+        background-color: #333;
+        color: #777
+      `,
+        cancelState: true
       }
     }
   }
