@@ -17,6 +17,10 @@ const createConfig = (localConfig: ConfigProps) => {
           ...defaultComponents?.button?.propsDefault,
           ...components?.button?.propsDefault
         },
+        shortcuts: {
+          ...defaultComponents?.button?.shortcuts,
+          ...components?.button?.shortcuts
+        },
         sizes: {
           xsmall: {
             ...defaultComponents?.button?.sizes?.xsmall,

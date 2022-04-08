@@ -1,6 +1,6 @@
 import { BtnBaseProps } from '../Button/button.types';
 import { TextareaBaseProps } from '../Textarea/textarea.types';
-import { ColorProps } from '../utils/global.types';
+import { ColorProps, ShorcutsCssOptionsProps, VariantOneProps } from '../utils/global.types';
 
 export interface ClassNameProps {
   prefix?: boolean;
@@ -36,25 +36,33 @@ export interface ElementState {
   visited?: string;
 }
 
-export interface ConfigButtonProps {
-  propsDefault?: BtnBaseProps;
-  sizes?: SizesPropsConfig;
-  state?: ElementState;
-  disabled?: DisabledPropsConfig;
+export interface ConfigVariantOneOptionsProps {
+  variant?: VariantOneProps;
+  color?: ColorProps;
 }
 
 export interface ConfigVariantProps {
-  props: { variant: string; color: ColorProps };
+  props: ConfigVariantOneOptionsProps;
   jsx: string;
 }
 
 export interface ConfigJsxBaseProps {
-  base: string;
+  base?: string;
   variants: ConfigVariantProps[];
+}
+
+export interface ConfigButtonProps {
+  propsDefault?: BtnBaseProps;
+  shortcuts?: ShorcutsCssOptionsProps;
+  sizes?: SizesPropsConfig;
+  state?: ElementState;
+  disabled?: DisabledPropsConfig;
+  jsxBase?: ConfigJsxBaseProps;
 }
 
 export interface ConfigTextAreaProps {
   propsDefault?: TextareaBaseProps;
+  shortcuts?: ShorcutsCssOptionsProps;
   sizes?: SizesPropsConfig;
   state?: ElementState;
   disabled?: DisabledPropsConfig;
