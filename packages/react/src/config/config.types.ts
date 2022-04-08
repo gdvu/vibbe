@@ -1,4 +1,6 @@
 import { BtnBaseProps } from '../Button/button.types';
+import { TextareaBaseProps } from '../Textarea/textarea.types';
+import { ColorProps } from '../utils/global.types';
 
 export interface ClassNameProps {
   prefix?: boolean;
@@ -41,9 +43,28 @@ export interface ConfigButtonProps {
   disabled?: DisabledPropsConfig;
 }
 
+export interface ConfigVariantProps {
+  props: { variant: string; color: ColorProps };
+  jsx: string;
+}
+
+export interface ConfigJsxBaseProps {
+  base: string;
+  variants: ConfigVariantProps[];
+}
+
+export interface ConfigTextAreaProps {
+  propsDefault?: TextareaBaseProps;
+  sizes?: SizesPropsConfig;
+  state?: ElementState;
+  disabled?: DisabledPropsConfig;
+  jsxBase?: ConfigJsxBaseProps;
+}
+
 export interface ConfigProps {
   className?: ClassNameProps;
   components?: {
     button?: ConfigButtonProps;
+    textarea?: ConfigTextAreaProps;
   };
 }
