@@ -5,6 +5,14 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "clean": "yarn workspaces foreach run clean",
+    "build": "yarn workspaces foreach run build",
+    "build:vibbe-react": "yarn workspace @vibbe/react run build",
+    "lint:vibbe-react": "eslint ./packages/react --ext .js,.ts,.tsx",
+    "prettier:check": "prettier --check 'packages/**/src/**/*.{ts,tsx}'",
+    "prettier:write": "prettier --write 'packages/**/src/**/*.{ts,tsx}'"
+  },
   "devDependencies": {
     "@types/eslint": "^8",
     "@types/prettier": "^2",
