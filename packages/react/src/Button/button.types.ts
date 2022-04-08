@@ -1,21 +1,15 @@
 import { ButtonHTMLAttributes, ReactNode, Ref } from 'react';
-import { ColorProps, SizesProps } from '../utils/global.types';
+import { ColorProps, ShorcutsCssOptionsProps, SizesProps, VariantOneProps } from '../utils/global.types';
 
 // inline css props
-export interface BtnInlineCssOptionsProps {
-  width?: string;
-  shadow?: string;
-  radius?: string;
-}
-
 export interface BtnInlineCssProps {
-  inline: BtnInlineCssOptionsProps;
+  shortcuts: ShorcutsCssOptionsProps;
 }
 
 // base props
 export interface BtnBaseProps {
   type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
-  variant?: 'contained' | 'outlined' | 'text';
+  variant?: VariantOneProps;
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
   disabled?: boolean;
@@ -24,7 +18,7 @@ export interface BtnBaseProps {
   as?: keyof JSX.IntrinsicElements;
 }
 
-export type BtnProps = BtnBaseProps & BtnInlineCssOptionsProps;
+export type BtnProps = BtnBaseProps & ShorcutsCssOptionsProps;
 
 export type BtnAttrs = Omit<ButtonHTMLAttributes<unknown>, keyof BtnProps>;
 export type RefProps = Ref<HTMLButtonElement | null>;

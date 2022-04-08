@@ -1,8 +1,8 @@
 import { SizesOptionsProps, SizesPropsConfig } from '../config/config.types';
 import { SizesProps } from '../utils/global.types';
-import { BtnBaseProps, BtnPropsAll } from './button.types';
+import { BtnProps, BtnPropsAll } from './button.types';
 
-const buttonDefaultProps = (options?: BtnBaseProps) => {
+const buttonDefaultProps = (options?: BtnProps) => {
   return {
     ...options
   };
@@ -10,7 +10,7 @@ const buttonDefaultProps = (options?: BtnBaseProps) => {
 
 const buttonMergeButtonAndConfig = (
   props: BtnPropsAll,
-  config: BtnBaseProps
+  config: BtnProps
 ) => {
   return {
     ...config,

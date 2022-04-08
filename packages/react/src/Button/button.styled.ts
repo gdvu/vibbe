@@ -25,8 +25,8 @@ export const getStyledButton = (
   }
 ) => {
   const { colors, sizes, prefix, disabled, state } = defaultConfigCss;
-  const { inline } = inlineCss;
-  const { width, radius, shadow } = inline;
+  const { shortcuts } = inlineCss;
+  const { width, radius, shadow } = shortcuts;
   const { color, size } = basePropsCss;
 
   const definedColor = evalColor({ color, colors });

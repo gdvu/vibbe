@@ -19,7 +19,12 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const btnRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => btnRef.current);
 
-    const defautBtnAll = buttonDefaultProps(components?.button?.propsDefault);
+    const configButtonProps = {
+      ...components?.button?.propsDefault,
+      ...components?.button?.shortcuts
+    }
+
+    const defautBtnAll = buttonDefaultProps(configButtonProps);
     const mergeProps = buttonMergeButtonAndConfig(props, defautBtnAll);
 
     const configSizes = components?.button?.sizes;
