@@ -22,7 +22,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const configButtonProps = {
       ...components?.button?.propsDefault,
       ...components?.button?.shortcuts
-    }
+    };
 
     const defautBtnAll = buttonDefaultProps(configButtonProps);
     const mergeProps = buttonMergeButtonAndConfig(props, defautBtnAll);
@@ -61,7 +61,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     };
 
     const styledButton: BtnStyledPropsAll = {
-      inline: inlineCss
+      shortcuts: inlineCss
     };
 
     const defaultConfigCss = {
