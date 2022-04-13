@@ -4,7 +4,8 @@ import { ColorsOptions } from '../theme/theme.types';
 import {
   ColorProps,
   ShorcutsCssOptionsProps,
-  VariantOneProps
+  VariantOneProps,
+  VariantTwoProps
 } from '../utils/global.types';
 
 export interface ClassNameProps {
@@ -46,14 +47,29 @@ export interface ConfigVariantOneOptionsProps {
   color?: ColorProps;
 }
 
+export interface ConfigVariantTwoOptionsProps {
+  variant: VariantTwoProps;
+  color?: ColorProps;
+}
+
 export interface ConfigVariantProps {
   props: ConfigVariantOneOptionsProps;
+  jsx: (colors?: ColorsOptions) => string;
+}
+
+export interface ConfigVariantTwoProps {
+  props: ConfigVariantTwoOptionsProps;
   jsx: (colors?: ColorsOptions) => string;
 }
 
 export interface ConfigJsxBaseProps {
   base?: string;
   variants: ConfigVariantProps[];
+}
+
+export interface ConfigJsxBaseTwoProps {
+  base?: string;
+  variants: ConfigVariantTwoProps[];
 }
 
 export interface ConfigButtonProps {
@@ -80,7 +96,7 @@ export interface ConfigTextAreaProps {
   sizes?: SizesPropsConfig;
   state?: ElementState;
   disabled?: DisabledPropsConfig;
-  jsxBase?: ConfigJsxBaseProps;
+  jsxBase?: ConfigJsxBaseTwoProps;
 }
 
 export interface DefaultConfigTextAreaProps {
@@ -89,7 +105,7 @@ export interface DefaultConfigTextAreaProps {
   sizes: SizesPropsConfig;
   state?: ElementState;
   disabled: DisabledPropsConfig;
-  jsxBase: ConfigJsxBaseProps;
+  jsxBase: ConfigJsxBaseTwoProps;
 }
 
 export interface ConfigProps {
