@@ -57,7 +57,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
 
     const basePropsCss = {
       color,
-      size
+      size,
+      disabled
     };
 
     const styledButton: BtnStyledPropsAll = {

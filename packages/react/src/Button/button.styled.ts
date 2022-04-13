@@ -22,12 +22,13 @@ export const getStyledButton = (
   basePropsCss: {
     color?: ColorProps;
     size?: SizesProps;
+    disabled?: boolean;
   }
 ) => {
   const { colors, sizes, prefix, disabled, state } = defaultConfigCss;
   const { shortcuts } = inlineCss;
   const { width, radius, shadow } = shortcuts;
-  const { color, size } = basePropsCss;
+  const { color, size, disabled: disabledProps } = basePropsCss;
 
   const definedColor = evalColor({ color, colors });
   const definedSize = defineSizesButton(size, sizes);
@@ -58,32 +59,46 @@ export const getStyledButton = (
 
     ${`.${prefix}btn--contained`} {
       border: 0;
-      border-radius: 17px;
       background-color: ${definedColor?.light};
       color: ${definedColor?.contrastText};
     }
 
     ${`.${prefix}btn--outlined`} {
       border: 1px solid ${definedColor?.light};
-      border-radius: 17px;
       background-color: transparent;
       color: ${definedColor?.light};
     }
 
     ${`.${prefix}btn:hover`} {
-      ${!disabled?.cancelState ? state?.hover : ''}
+      ${disabledProps
+        ? !disabled?.cancelState
+          ? state?.hover
+          : ''
+        : state?.hover}
     }
 
     ${`.${prefix}btn:active`} {
-      ${!disabled?.cancelState ? state?.active : ''}
+      ${disabledProps
+        ? !disabled?.cancelState
+          ? state?.active
+          : ''
+        : state?.active}
     }
 
     ${`.${prefix}btn:focus`} {
-      ${!disabled?.cancelState ? state?.focus : ''}
+      ${disabledProps
+        ? !disabled?.cancelState
+          ? state?.focus
+          : ''
+        : state?.focus}
     }
 
     ${`.${prefix}btn:visited`} {
-      ${!disabled?.cancelState ? state?.visited : ''}
+      ${disabledProps
+        ? !disabled?.cancelState
+          ? state?.visited
+          : ''
+        : state?.visited}
     }
 
     ${`.${prefix}btn`} {
