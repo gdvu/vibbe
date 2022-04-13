@@ -1,12 +1,14 @@
 import css from 'styled-jsx/css';
 import {
+  ConfigJsxBaseProps,
   DisabledPropsConfig,
   ElementState,
   SizesPropsConfig
 } from '../config/config.types';
 import { evalColor } from '../styles/main';
 import { Colors } from '../theme/theme.types';
-import { ColorProps, SizesProps } from '../utils/global.types';
+import { defineConfigVariant } from '../utils';
+import { ColorProps, SizesProps, VariantOneProps } from '../utils/global.types';
 import { BtnStyledPropsAll } from './button.types';
 import { defineSizesButton } from './button.utils';
 
@@ -18,55 +20,47 @@ export const getStyledButton = (
     sizes?: SizesPropsConfig;
     disabled?: DisabledPropsConfig;
     state?: ElementState;
+    jsxBase: ConfigJsxBaseProps;
   },
   basePropsCss: {
     color?: ColorProps;
     size?: SizesProps;
     disabled?: boolean;
+    variant?: VariantOneProps;
   }
 ) => {
-  const { colors, sizes, prefix, disabled, state } = defaultConfigCss;
+  const { colors, sizes, prefix, disabled, state, jsxBase } = defaultConfigCss;
   const { shortcuts } = inlineCss;
   const { width, radius, shadow } = shortcuts;
-  const { color, size, disabled: disabledProps } = basePropsCss;
+  const { color, size, disabled: disabledProps, variant } = basePropsCss;
 
   const definedColor = evalColor({ color, colors });
   const definedSize = defineSizesButton(size, sizes);
+  const definedVariant = defineConfigVariant({
+    variants: jsxBase.variants,
+    color,
+    variant
+  });
 
   return css.resolve`
     ${`.${prefix}btn`} {
       ${definedSize?.width ? `width: ${definedSize?.width};` : ''}
       ${definedSize?.height ? `height: ${definedSize?.height};` : ''}
-      display: flex;
-      justify-content: center;
-      align-items: center;
       ${definedSize?.padding ? `padding: ${definedSize?.padding};` : ''}
       ${definedSize?.fontSize ? `font-size: ${definedSize?.fontSize};` : ''}
-      font-weight: 500;
-      font-family: var(--font-one);
-      letter-spacing: 0.5px;
-      box-sizing: border-box;
-      user-select: none;
-      outline: none;
-      cursor: pointer;
+      ${jsxBase.base ?? ''}
     }
 
     ${`.${prefix}btn--text`} {
-      border: 0;
-      background-color: transparent;
-      color: ${definedColor?.light};
+      ${definedVariant(definedColor) ?? ''}
     }
 
     ${`.${prefix}btn--contained`} {
-      border: 0;
-      background-color: ${definedColor?.light};
-      color: ${definedColor?.contrastText};
+      ${definedVariant(definedColor) ?? ''}
     }
 
     ${`.${prefix}btn--outlined`} {
-      border: 1px solid ${definedColor?.light};
-      background-color: transparent;
-      color: ${definedColor?.light};
+      ${definedVariant(definedColor) ?? ''}
     }
 
     ${`.${prefix}btn:hover`} {
