@@ -1,12 +1,12 @@
 import configDefault from './config.default';
-import { ConfigProps } from './config.types';
+import { ConfigProps, DefaultConfigProps } from './config.types';
 
 const createConfig = (localConfig: ConfigProps) => {
   const { className, components } = localConfig;
   const { className: defaultClassName, components: defaultComponents } =
     configDefault;
 
-  const mergeConfig: ConfigProps = {
+  const mergeConfig: DefaultConfigProps = {
     className: {
       ...defaultClassName,
       ...className
@@ -16,10 +16,6 @@ const createConfig = (localConfig: ConfigProps) => {
         propsDefault: {
           ...defaultComponents?.button?.propsDefault,
           ...components?.button?.propsDefault
-        },
-        shortcuts: {
-          ...defaultComponents?.button?.shortcuts,
-          ...components?.button?.shortcuts
         },
         sizes: {
           xsmall: {
@@ -50,7 +46,19 @@ const createConfig = (localConfig: ConfigProps) => {
         disabled: {
           ...defaultComponents?.button?.disabled,
           ...components?.button?.disabled
+        },
+        shortcuts: {
+          ...defaultComponents?.button?.shortcuts,
+          ...components?.button?.shortcuts
+        },
+        jsxBase: {
+          ...defaultComponents?.button.jsxBase,
+          ...components?.button?.jsxBase
         }
+      },
+      textarea: {
+        ...defaultComponents.textarea,
+        ...components?.textarea
       }
     }
   };
@@ -58,7 +66,7 @@ const createConfig = (localConfig: ConfigProps) => {
   return mergeConfig;
 };
 
-const createDefaultConfig = (options: ConfigProps) => {
+const createDefaultConfig = (options: DefaultConfigProps) => {
   const { className, components } = options;
 
   const config = {

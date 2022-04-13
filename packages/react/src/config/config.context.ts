@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import configDefault from './config.default';
-import { ConfigProps } from './config.types';
+import { DefaultConfigProps } from './config.types';
 
-export const ConfigContext = createContext<ConfigProps>(configDefault);
+export const ConfigContext = createContext<DefaultConfigProps>(configDefault);
 
 export const useConfig = () => useContext(ConfigContext);

@@ -1,6 +1,11 @@
 import { BtnBaseProps } from '../Button/button.types';
 import { TextareaBaseProps } from '../Textarea/textarea.types';
-import { ColorProps, ShorcutsCssOptionsProps, VariantOneProps } from '../utils/global.types';
+import { ColorsOptions } from '../theme/theme.types';
+import {
+  ColorProps,
+  ShorcutsCssOptionsProps,
+  VariantOneProps
+} from '../utils/global.types';
 
 export interface ClassNameProps {
   prefix?: boolean;
@@ -37,13 +42,13 @@ export interface ElementState {
 }
 
 export interface ConfigVariantOneOptionsProps {
-  variant?: VariantOneProps;
+  variant: VariantOneProps;
   color?: ColorProps;
 }
 
 export interface ConfigVariantProps {
   props: ConfigVariantOneOptionsProps;
-  jsx: string;
+  jsx: (colors?: ColorsOptions) => string;
 }
 
 export interface ConfigJsxBaseProps {
@@ -60,6 +65,15 @@ export interface ConfigButtonProps {
   jsxBase?: ConfigJsxBaseProps;
 }
 
+export interface DefaultConfigButtonProps {
+  propsDefault?: BtnBaseProps;
+  shortcuts?: ShorcutsCssOptionsProps;
+  sizes: SizesPropsConfig;
+  state?: ElementState;
+  disabled: DisabledPropsConfig;
+  jsxBase: ConfigJsxBaseProps;
+}
+
 export interface ConfigTextAreaProps {
   propsDefault?: TextareaBaseProps;
   shortcuts?: ShorcutsCssOptionsProps;
@@ -69,10 +83,27 @@ export interface ConfigTextAreaProps {
   jsxBase?: ConfigJsxBaseProps;
 }
 
+export interface DefaultConfigTextAreaProps {
+  propsDefault?: TextareaBaseProps;
+  shortcuts?: ShorcutsCssOptionsProps;
+  sizes: SizesPropsConfig;
+  state?: ElementState;
+  disabled: DisabledPropsConfig;
+  jsxBase: ConfigJsxBaseProps;
+}
+
 export interface ConfigProps {
   className?: ClassNameProps;
   components?: {
     button?: ConfigButtonProps;
     textarea?: ConfigTextAreaProps;
+  };
+}
+
+export interface DefaultConfigProps {
+  className: ClassNameProps;
+  components: {
+    button: DefaultConfigButtonProps;
+    textarea: DefaultConfigTextAreaProps;
   };
 }

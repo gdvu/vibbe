@@ -1,4 +1,4 @@
-import { ConfigProps } from '../config/config.types';
+import { DefaultConfigProps } from '../config/config.types';
 import { RootProps } from '../root/root.types';
 
 export interface ColorsOptions {
@@ -21,7 +21,7 @@ export interface ThemeProps {
 }
 
 export interface ThemeProviderProps {
-  theme: ThemeProps;
+  theme?: ThemeProps;
   root?: RootProps;
-  config?: ConfigProps;
+  config?: DefaultConfigProps;
 }
