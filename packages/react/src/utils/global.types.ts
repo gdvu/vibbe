@@ -1,3 +1,5 @@
+import { ConfigVariantProps } from '../config/config.types';
+
 export type ColorProps =
   | 'primary'
   | 'secondary'
@@ -19,4 +21,10 @@ export interface ShorcutsCssOptionsProps {
 
 export interface ShorcutsCssProps {
   shorcuts: ShorcutsCssOptionsProps;
+}
+
+export interface DefineConfigVariantProps {
+  variants: ConfigVariantProps[];
+  color?: ColorProps;
+  variant?: VariantOneProps;
 }

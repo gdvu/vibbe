@@ -3,7 +3,8 @@ import {
   SizesOptionsProps,
   SizesPropsConfig
 } from '../config/config.types';
-import { SizesProps } from './global.types';
+import { ColorsOptions } from '../theme/theme.types';
+import { DefineConfigVariantProps, SizesProps } from './global.types';
 
 const defineClassNamePrefix = (className?: ClassNameProps) => {
   const classNameHasPrefix = className?.prefix;
@@ -37,4 +38,26 @@ const defineSizes = (
   }
 };
 
-export { defineClassNamePrefix, defineSizes };
+const defineConfigVariant = (options: DefineConfigVariantProps) => {
+  const { variants, color: colorSelected, variant: variantSelected } = options;
+
+  let jsxInit = (colors?: ColorsOptions) => '';
+
+  for (let i = 0; i < variants.length; i++) {
+    const item = variants[i];
+    const variant = item.props.variant;
+    const color = item.props.color;
+
+    if (variant === variantSelected && color === colorSelected) {
+      jsxInit = item.jsx;
+    }
+
+    if (variant === variantSelected) {
+      jsxInit = item.jsx;
+    }
+  }
+
+  return jsxInit;
+};
+
+export { defineClassNamePrefix, defineSizes, defineConfigVariant };
