@@ -111,14 +111,38 @@ const configDefault = createDefaultConfig({
       },
       jsxBase: {
         base: `
-          border: 1px solid #e3e6eb;
-          background: #f6f6f6;
-          border-radius: 12px;
           padding: 12px 15px;
           outline: none;
           resize: none;
           font-size: 15px;
-        `
+        `,
+        variants: [
+          {
+            props: { variant: 'filled' },
+            jsx: () => `
+              border: 1px solid #e3e6eb;
+              border-radius: 12px;
+              background: #f2f2f2;
+            `
+          },
+          {
+            props: { variant: 'outline' },
+            jsx: () => `
+              border: 2px solid #d6d6d6;
+              border-radius: 12px;
+              background: transparent;
+            `
+          },
+          {
+            props: { variant: 'underlined' },
+            jsx: () => `
+              border: 0;
+              border-radius: 0;
+              border-bottom: 2px solid #d6d6d6;
+              background: transparent;
+            `
+          }
+        ]
       },
       shortcuts: {
         width: '100%'
