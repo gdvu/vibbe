@@ -1,5 +1,10 @@
 import { ButtonHTMLAttributes, ReactNode, Ref } from 'react';
-import { ColorProps, ShorcutsCssOptionsProps, SizesProps, VariantOneProps } from '../utils/global.types';
+import {
+  ColorProps,
+  ShorcutsCssOptionsProps,
+  SizesProps,
+  VariantOneProps
+} from '../utils/global.types';
 
 // inline css props
 export interface BtnInlineCssProps {
@@ -15,6 +20,7 @@ export interface BtnBaseProps {
   disabled?: boolean;
   color?: ColorProps;
   size?: SizesProps;
+  animated?: boolean;
   as?: keyof JSX.IntrinsicElements;
 }
 
