@@ -43,7 +43,7 @@ export const getStyledButton = (
   });
 
   return css.resolve`
-    ${`.${prefix}btn`} {
+    ${`.${prefix}button`} {
       ${definedSize?.width ? `width: ${definedSize?.width};` : ''}
       ${definedSize?.height ? `height: ${definedSize?.height};` : ''}
       ${definedSize?.padding ? `padding: ${definedSize?.padding};` : ''}
@@ -51,19 +51,19 @@ export const getStyledButton = (
       ${jsxBase.base ?? ''}
     }
 
-    ${`.${prefix}btn--text`} {
+    ${`.${prefix}button-text`} {
       ${definedVariant(definedColor) ?? ''}
     }
 
-    ${`.${prefix}btn--contained`} {
+    ${`.${prefix}button-contained`} {
       ${definedVariant(definedColor) ?? ''}
     }
 
-    ${`.${prefix}btn--outlined`} {
+    ${`.${prefix}button-outlined`} {
       ${definedVariant(definedColor) ?? ''}
     }
 
-    ${`.${prefix}btn:hover`} {
+    ${`.${prefix}button:hover`} {
       ${disabledProps
         ? !disabled?.cancelState
           ? state?.hover
@@ -71,7 +71,7 @@ export const getStyledButton = (
         : state?.hover}
     }
 
-    ${`.${prefix}btn:active`} {
+    ${`.${prefix}button:active`} {
       ${disabledProps
         ? !disabled?.cancelState
           ? state?.active
@@ -79,7 +79,7 @@ export const getStyledButton = (
         : state?.active}
     }
 
-    ${`.${prefix}btn:focus`} {
+    ${`.${prefix}button:focus`} {
       ${disabledProps
         ? !disabled?.cancelState
           ? state?.focus
@@ -87,7 +87,7 @@ export const getStyledButton = (
         : state?.focus}
     }
 
-    ${`.${prefix}btn:visited`} {
+    ${`.${prefix}button:visited`} {
       ${disabledProps
         ? !disabled?.cancelState
           ? state?.visited
@@ -95,13 +95,13 @@ export const getStyledButton = (
         : state?.visited}
     }
 
-    ${`.${prefix}btn`} {
+    ${`.${prefix}button`} {
       ${radius ? `border-radius: ${radius};` : ''}
       ${shadow ? `box-shadow: ${shadow};` : ''}
       ${width ? `width: ${width};` : ''}
     }
 
-    ${`.${prefix}btn-disabled`} {
+    ${`.${prefix}button-disabled`} {
       ${disabled?.jsx ?? ''}
     }
   `;

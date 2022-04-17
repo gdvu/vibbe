@@ -100,8 +100,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const isIconRight = Boolean(iconRight);
 
     const isClassNameProps = classNameProps || '';
-    const classDisabled = disabled ? `${prefix}btn-disabled` : '';
-    const classNames = `${prefix}btn ${prefix}btn--${variant} ${className} ${isClassNameProps} ${classDisabled}`;
+    const classDisabled = disabled ? `${prefix}button-disabled` : '';
+    const classNames = `${prefix}button ${prefix}button-${variant} ${className} ${isClassNameProps} ${classDisabled}`;
 
     if (jsx) {
       return (
