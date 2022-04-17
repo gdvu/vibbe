@@ -10,6 +10,7 @@ const configDefault = createDefaultConfig({
     button: {
       propsDefault: {
         disabled: false,
+        animated: false,
         type: 'button',
         variant: 'contained',
         color: 'primary',
