@@ -63,7 +63,7 @@ export const getStyledButton = (
       ${definedVariant(definedColor) ?? ''}
     }
 
-    ${`.${prefix}button:hover`} {
+    ${`.${prefix}button-hover`} {
       ${disabledProps
         ? !disabled?.cancelState
           ? state?.hover
@@ -71,7 +71,7 @@ export const getStyledButton = (
         : state?.hover}
     }
 
-    ${`.${prefix}button:active`} {
+    ${`.${prefix}button-active`} {
       ${disabledProps
         ? !disabled?.cancelState
           ? state?.active
@@ -79,7 +79,7 @@ export const getStyledButton = (
         : state?.active}
     }
 
-    ${`.${prefix}button:focus`} {
+    ${`.${prefix}button-focus`} {
       ${disabledProps
         ? !disabled?.cancelState
           ? state?.focus

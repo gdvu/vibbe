@@ -1,4 +1,5 @@
 import React, {
+  FocusEvent,
   forwardRef,
   MouseEvent,
   PropsWithChildren,
@@ -53,6 +54,10 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       size,
       animated,
       onClick,
+      onMouseOver,
+      onMouseOut,
+      onFocus,
+      onBlur,
       className: classNameProps,
       ...rest
     } = mergeProps;
@@ -90,6 +95,34 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       onClick?.(e);
     };
 
+    const handleMouseOver = (e: MouseEvent<HTMLButtonElement>) => {
+      if (btnRef.current) {
+        btnRef.current.classList.add(`${prefix}button-hover`);
+      }
+      onMouseOver?.(e);
+    };
+
+    const handleMouseOut = (e: MouseEvent<HTMLButtonElement>) => {
+      if (btnRef.current) {
+        btnRef.current.classList.remove(`${prefix}button-hover`);
+      }
+      onMouseOut?.(e);
+    };
+
+    const handleFocus = (e: FocusEvent<HTMLButtonElement>) => {
+      if (btnRef.current) {
+        btnRef.current?.classList.add(`${prefix}button-focus`);
+      }
+      onFocus?.(e);
+    };
+
+    const handleBlur = (e: FocusEvent<HTMLButtonElement>) => {
+      if (btnRef.current) {
+        btnRef.current?.classList.remove(`${prefix}button-focus`);
+      }
+      onBlur?.(e);
+    };
+
     const { className, styles } = getStyledButton(
       styledButton,
       defaultConfigCss,
@@ -112,6 +145,10 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
             className={classNames}
             disabled={disabled}
             onClick={handleClick}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             {...rest}
           >
             {isIconLeft && iconLeft}
@@ -132,6 +169,10 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
           className={classNames}
           disabled={disabled}
           onClick={handleClick}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           {...rest}
         >
           {isIconLeft && iconLeft}
