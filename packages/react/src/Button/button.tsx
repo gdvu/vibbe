@@ -1,5 +1,6 @@
 import React, {
   forwardRef,
+  MouseEvent,
   PropsWithChildren,
   useImperativeHandle,
   useRef
@@ -10,6 +11,8 @@ import { BtnPropsAll, BtnStyledPropsAll, RefProps } from './button.types';
 import { useTheme } from '../theme/theme.context';
 import { defineClassNamePrefix } from '../utils';
 import { useConfig } from '../config/config.context';
+import useMouse from '../hooks/useMouse';
+import Wave from '../animations/wave';
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
   ({ ...props }, ref: RefProps) => {
@@ -33,6 +36,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
     const configBase = components.button.jsxBase;
     const prefix = defineClassNamePrefix(classNameConfig);
 
+    const { onMouse, ...useMouseProps } = useMouse(btnRef);
+
     const {
       type,
       variant,
@@ -46,6 +51,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       shadow,
       jsx,
       size,
+      animated,
+      onClick,
       className: classNameProps,
       ...rest
     } = mergeProps;
@@ -76,6 +83,13 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       jsxBase: configBase
     };
 
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+      if (btnRef.current) {
+        onMouse(e);
+      }
+      onClick?.(e);
+    };
+
     const { className, styles } = getStyledButton(
       styledButton,
       defaultConfigCss,
@@ -97,6 +111,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
             type={type}
             className={classNames}
             disabled={disabled}
+            onClick={handleClick}
             {...rest}
           >
             {isIconLeft && iconLeft}
@@ -116,11 +131,18 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
           type={type}
           className={classNames}
           disabled={disabled}
+          onClick={handleClick}
           {...rest}
         >
           {isIconLeft && iconLeft}
           {children}
           {isIconRight && iconRight}
+          {animated && (
+            <Wave
+              backgroundColor='rgba(255, 255, 255, 0.3)'
+              {...useMouseProps}
+            />
+          )}
         </button>
         {styles}
       </>
