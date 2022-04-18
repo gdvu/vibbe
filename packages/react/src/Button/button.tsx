@@ -58,6 +58,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       onMouseOut,
       onFocus,
       onBlur,
+      onMouseDown,
+      onMouseUp,
       className: classNameProps,
       ...rest
     } = mergeProps;
@@ -123,6 +125,20 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
       onBlur?.(e);
     };
 
+    const handleMouseDown = (e: MouseEvent<HTMLButtonElement>) => {
+      if (btnRef.current) {
+        btnRef.current.classList.add(`${prefix}button-active`);
+      }
+      onMouseDown?.(e);
+    };
+
+    const handleMouseUp = (e: MouseEvent<HTMLButtonElement>) => {
+      if (btnRef.current) {
+        btnRef.current.classList.remove(`${prefix}button-active`);
+      }
+      onMouseUp?.(e);
+    };
+
     const { className, styles } = getStyledButton(
       styledButton,
       defaultConfigCss,
@@ -149,6 +165,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
             onMouseOut={handleMouseOut}
             onFocus={handleFocus}
             onBlur={handleBlur}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
             {...rest}
           >
             {isIconLeft && iconLeft}
@@ -173,6 +191,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<BtnPropsAll>>(
           onMouseOut={handleMouseOut}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
           {...rest}
         >
           {isIconLeft && iconLeft}
