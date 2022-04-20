@@ -19,6 +19,8 @@ export interface InputBaseProps {
   iconRight?: ReactNode;
   color?: ColorProps;
   size?: SizesProps;
+  label?: string;
+  labelPlaceholder?: string;
   disabled?: boolean;
   required?: boolean;
 }
