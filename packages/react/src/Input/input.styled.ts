@@ -18,6 +18,22 @@ export const getStyledInput = (options: GetStyledTwoProps) => {
   });
 
   return css.resolve`
+    input {
+      width: inherit;
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #a6a6a7;
+      color: #acacac;
+      font-weight: 500;
+    }
+
     .input {
       ${jsxBase.base ?? ''}
     }
