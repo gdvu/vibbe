@@ -32,6 +32,8 @@ const Input = forwardRef<HTMLInputElement, InputPropsAll>(
       shadow,
       color,
       size,
+      label,
+      labelPlaceholder,
       disabled,
       variant
     } = mergeProps;
@@ -55,15 +57,39 @@ const Input = forwardRef<HTMLInputElement, InputPropsAll>(
 
     const classNamesInput = `${prefix}input ${prefix}input-${variant} ${classNameInput}`;
 
+    if (labelPlaceholder) {
+      const classNamesContainer = `input-holder`;
+      const classNamesLabel = `label-holder`;
+
+      return (
+        <>
+          <div className={classNamesContainer}>
+            <label className={classNamesLabel}>{labelPlaceholder}</label>
+            <input
+              ref={inputRef}
+              type={type}
+              placeholder={placeholder}
+              value={value}
+              className={classNamesInput}
+            />
+          </div>
+          {stylesInput}
+        </>
+      );
+    }
+
     return (
       <>
-        <input
-          ref={inputRef}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          className={classNamesInput}
-        />
+        <div>
+          <label>{label}</label>
+          <input
+            ref={inputRef}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            className={classNamesInput}
+          />
+        </div>
         {stylesInput}
       </>
     );
