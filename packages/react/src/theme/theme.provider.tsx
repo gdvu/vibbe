@@ -3,6 +3,7 @@ import { ConfigContext } from '../config/config.context';
 import configDefault from '../config/config.default';
 import { RootContext } from '../root/root.context';
 import rootDefault from '../root/root.default';
+import { getGlobalCss } from '../styles/global.styles';
 import { ThemeContext } from './theme.context';
 import defaultTheme from './theme.default';
 import { ThemeProviderProps } from './theme.types';
@@ -25,6 +26,9 @@ const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = props => {
         <ConfigContext.Provider value={config}>
           {children}
         </ConfigContext.Provider>
+        <style jsx global>
+          {getGlobalCss}
+        </style>
       </ThemeContext.Provider>
     </RootContext.Provider>
   );
