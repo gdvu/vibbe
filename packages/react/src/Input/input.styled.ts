@@ -24,10 +24,6 @@ export const getStyledInput = (options: GetStyledTwoProps) => {
       margin: 0;
     }
 
-    input:focus {
-      outline: none;
-    }
-
     input::placeholder {
       color: #a6a6a7;
       color: #acacac;
