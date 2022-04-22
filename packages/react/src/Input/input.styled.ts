@@ -28,6 +28,13 @@ export const getStyledInput = () => {
       padding: 0 24px;
       height: 68px;
     }
+
+    .input-underlined {
+      align-items: flex-end;
+      height: auto;
+      padding-bottom: 6px;
+      box-shadow: inset 0px -1.32px 0px 0px #8c8c8c;
+    }
   `;
 };
 
@@ -51,6 +58,14 @@ export const styleInputContent = css.resolve`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+
+  .input-content-underlined {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
   }
 `;
 
@@ -127,6 +142,21 @@ export const getStyledLabel = () => {
       transform: translate(18px, -50%);
       letter-spacing: normal;
       padding: 0;
+    }
+
+    .input_label-underlined {
+      padding-bottom: 18px;
+      font-size: 16px;
+      transform: scale(0.85);
+      transform-origin: left top;
+      transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+        transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+      font-weight: normal;
+      color: #646464;
+    }
+
+    .input_labelplaceholder-underlined {
+      transform: translate(0, 95%);
     }
   `;
 };
