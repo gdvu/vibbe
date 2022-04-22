@@ -1,22 +1,27 @@
 import css from 'styled-jsx/css';
-import { evalColor } from '../styles/main';
-import { defineConfigVariantTwo, defineSizes } from '../utils';
-import { GetStyledTwoProps } from '../utils/global.types';
 
-export const getStyledInput = (options: GetStyledTwoProps) => {
-  const { shortcuts, baseProps, defaultConfig } = options;
-  const { colors, sizes, prefix, disabled, state, jsxBase } = defaultConfig;
-  const { color, size, disabled: disabledProps, variant } = baseProps;
-  const { width, shadow, radius } = shortcuts;
+export const getStyledInput = () => {
+  return css.resolve`
+    .input {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #000;
+    }
+  `;
+};
 
-  const definedColor = evalColor({ color, colors });
-  const definedSize = defineSizes(size, sizes);
-  const definedVariant = defineConfigVariantTwo({
-    variants: jsxBase.variants,
-    color,
-    variant
-  });
+export const styleInputContent = css.resolve`
+  .input-content {
+    width: 100%;
+  }
+`;
 
+export const getStyledTextField = () => {
   return css.resolve`
     input {
       width: inherit;
@@ -29,21 +34,9 @@ export const getStyledInput = (options: GetStyledTwoProps) => {
       color: #acacac;
       font-weight: 500;
     }
-
-    .input {
-      ${jsxBase.base ?? ''}
-    }
-
-    .input-filled {
-      ${definedVariant(definedColor) ?? ''}
-    }
-
-    .input-underlined {
-      ${definedVariant(definedColor) ?? ''}
-    }
-
-    .input-outline {
-      ${definedVariant(definedColor) ?? ''}
-    }
   `;
+};
+
+export const getStyledLabel = () => {
+  return css.resolve``;
 };

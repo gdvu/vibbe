@@ -7,7 +7,12 @@ import React, {
 import { useConfig } from '../config/config.context';
 import { useTheme } from '../theme/theme.context';
 import { defineClassNamePrefix } from '../utils';
-import { getStyledInput } from './input.styled';
+import {
+  getStyledInput,
+  getStyledLabel,
+  getStyledTextField,
+  styleInputContent
+} from './input.styled';
 import { InputPropsAll, InputRef } from './input.types';
 import { inputDefaultProps, inputMergePropsAndConfig } from './input.utils';
 
@@ -41,7 +46,8 @@ const Input = forwardRef<HTMLInputElement, InputPropsAll>(
       labelPlaceholder,
       disabled,
       variant,
-      autoFocus
+      autoFocus,
+      ...rest
     } = mergeProps;
 
     useEffect(() => {
@@ -51,42 +57,51 @@ const Input = forwardRef<HTMLInputElement, InputPropsAll>(
       }
     }, []);
 
-    const shortcuts = { width, radius, shadow };
-    const defaultConfig = {
-      prefix,
-      colors,
-      sizes: configSizes,
-      disabled: configDisabled,
-      state: configStateCss,
-      jsxBase
-    };
-    const baseProps = { color, size, disabled, variant };
+    // const shortcuts = { width, radius, shadow };
+    // const defaultConfig = {
+    //   prefix,
+    //   colors,
+    //   sizes: configSizes,
+    //   disabled: configDisabled,
+    //   state: configStateCss,
+    //   jsxBase
+    // };
+    // const baseProps = { color, size, disabled, variant };
 
-    const { className: classNameInput, styles: stylesInput } = getStyledInput({
-      shortcuts,
-      defaultConfig,
-      baseProps
-    });
+    const { className: jsxInput, styles: stylesInput } = getStyledInput();
+    const { className: jsxInputContent, styles: stylesInputContent } =
+      styleInputContent;
+    const { className: jsxTextField, styles: stylesTextField } =
+      getStyledTextField();
+    const { className: jsxLabel, styles: stylesILabel } = getStyledLabel();
 
-    const classNamesInput = `${prefix}input ${prefix}input-${variant} ${classNameInput}`;
+    const classNamesInput = `${prefix}input ${prefix}input-${variant} ${jsxInput}`;
+    const classNamesTextField = `${prefix}input_textfield input_textfield-${variant} ${jsxTextField}`;
+    const classNamesLabel = `input_label-${variant} ${jsxLabel} ${
+      labelPlaceholder ? `input_labelplaceholder-${variant}` : ''
+    }`;
+    const classNamesInputContent = `${jsxInputContent}`;
 
     if (labelPlaceholder) {
-      const classNamesContainer = `input-holder`;
-      const classNamesLabel = `label-holder`;
-
       return (
         <>
-          <div className={classNamesContainer}>
-            <label className={classNamesLabel}>{labelPlaceholder}</label>
-            <input
-              ref={inputRef}
-              type={type}
-              placeholder={placeholder}
-              value={value}
-              className={classNamesInput}
-            />
+          <div className={classNamesInput}>
+            <div className={classNamesInputContent}>
+              <label className={classNamesLabel}>{labelPlaceholder}</label>
+              <input
+                ref={inputRef}
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                className={classNamesTextField}
+                {...rest}
+              />
+            </div>
           </div>
           {stylesInput}
+          {stylesInputContent}
+          {stylesTextField}
+          {stylesILabel}
         </>
       );
     }
