@@ -1,4 +1,9 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef
+} from 'react';
 import { useConfig } from '../config/config.context';
 import { useTheme } from '../theme/theme.context';
 import { defineClassNamePrefix } from '../utils';
@@ -35,8 +40,16 @@ const Input = forwardRef<HTMLInputElement, InputPropsAll>(
       label,
       labelPlaceholder,
       disabled,
-      variant
+      variant,
+      autoFocus
     } = mergeProps;
+
+    useEffect(() => {
+      if (autoFocus) {
+        if (!inputRef.current) return;
+        inputRef.current.focus();
+      }
+    }, []);
 
     const shortcuts = { width, radius, shadow };
     const defaultConfig = {

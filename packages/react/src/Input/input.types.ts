@@ -21,6 +21,7 @@ export interface InputBaseProps {
   size?: SizesProps;
   label?: string;
   labelPlaceholder?: string;
+  autoFocus?: boolean;
   disabled?: boolean;
   required?: boolean;
 }
