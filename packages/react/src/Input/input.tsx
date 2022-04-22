@@ -80,45 +80,27 @@ const Input = forwardRef<HTMLInputElement, InputPropsAll>(
     const classNamesLabel = `input_label-${variant} ${jsxLabel} ${
       labelPlaceholder ? `input_labelplaceholder-${variant}` : ''
     }`;
-    const classNamesInputContent = `${jsxInputContent}`;
-
-    if (labelPlaceholder) {
-      return (
-        <>
-          <div className={classNamesInput}>
-            <div className={classNamesInputContent}>
-              <label className={classNamesLabel}>{labelPlaceholder}</label>
-              <input
-                ref={inputRef}
-                type={type}
-                placeholder={placeholder}
-                value={value}
-                className={classNamesTextField}
-                {...rest}
-              />
-            </div>
-          </div>
-          {stylesInput}
-          {stylesInputContent}
-          {stylesTextField}
-          {stylesILabel}
-        </>
-      );
-    }
+    const classNamesInputContent = `input-content input-content-${variant} ${jsxInputContent}`;
 
     return (
       <>
-        <div>
-          <label>{label}</label>
-          <input
-            ref={inputRef}
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            className={classNamesInput}
-          />
+        <div className={classNamesInput}>
+          <div className={classNamesInputContent}>
+            <label className={classNamesLabel}>{labelPlaceholder}</label>
+            <input
+              ref={inputRef}
+              type={type}
+              placeholder={placeholder}
+              value={value}
+              className={classNamesTextField}
+              {...rest}
+            />
+          </div>
         </div>
         {stylesInput}
+        {stylesInputContent}
+        {stylesTextField}
+        {stylesILabel}
       </>
     );
   }
