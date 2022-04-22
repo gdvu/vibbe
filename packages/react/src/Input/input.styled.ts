@@ -20,6 +20,14 @@ export const getStyledInput = () => {
       padding: 0 24px;
       height: 78px;
     }
+
+    .input-outline {
+      align-items: center;
+      box-shadow: inset 0px 0px 0px 1.52px #ddd;
+      border-radius: 24px;
+      padding: 0 24px;
+      height: 68px;
+    }
   `;
 };
 
@@ -35,6 +43,14 @@ export const styleInputContent = css.resolve`
     align-items: flex-start;
     justify-content: center;
     position: relative;
+  }
+
+  .input-content-outline {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
   }
 `;
 
@@ -86,6 +102,31 @@ export const getStyledLabel = () => {
 
     .input_labelplaceholder-filled {
       transform: translate(0, 50%);
+    }
+
+    .input_label-outline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      transform: translate(18px, -9px) scale(0.84);
+      transform-origin: left top;
+      background-color: #fff;
+      transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+        transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+        top 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+      font-size: 16px;
+      color: #606060;
+      letter-spacing: 0.35px;
+      padding: 0 6px;
+      pointer-events: none;
+    }
+
+    .input_labelplaceholder-outline {
+      top: 50%;
+      transform: translate(18px, -50%);
+      letter-spacing: normal;
+      padding: 0;
     }
   `;
 };
