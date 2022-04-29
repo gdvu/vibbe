@@ -57,17 +57,6 @@ const Input = forwardRef<HTMLInputElement, InputPropsAll>(
       }
     }, []);
 
-    // const shortcuts = { width, radius, shadow };
-    // const defaultConfig = {
-    //   prefix,
-    //   colors,
-    //   sizes: configSizes,
-    //   disabled: configDisabled,
-    //   state: configStateCss,
-    //   jsxBase
-    // };
-    // const baseProps = { color, size, disabled, variant };
-
     const { className: jsxInput, styles: stylesInput } = getStyledInput();
     const { className: jsxInputContent, styles: stylesInputContent } =
       styleInputContent;
@@ -77,9 +66,8 @@ const Input = forwardRef<HTMLInputElement, InputPropsAll>(
 
     const classNamesInput = `${prefix}input ${prefix}input-${variant} ${jsxInput}`;
     const classNamesTextField = `${prefix}input_textfield input_textfield-${variant} ${jsxTextField}`;
-    const classNamesLabel = `input_label-${variant} ${jsxLabel} ${
-      labelPlaceholder ? `input_labelplaceholder-${variant}` : ''
-    }`;
+    const classNamesLabel = `input_label-${variant} ${jsxLabel}`;
+    const classNamesLabelPlaceholder = `input_labelplaceholder-${variant} ${jsxLabel}`;
     const classNamesInputContent = `input-content input-content-${variant} ${jsxInputContent}`;
 
     return (
