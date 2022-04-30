@@ -59,6 +59,32 @@ const createConfig = (localConfig: ConfigProps) => {
       textarea: {
         ...defaultComponents.textarea,
         ...components?.textarea
+      },
+      input: {
+        propsDefault: {
+          ...defaultComponents?.input?.propsDefault,
+          ...components?.input?.propsDefault
+        },
+        sizes: {
+          ...defaultComponents.input.sizes,
+          ...components?.input?.sizes
+        },
+        state: {
+          ...defaultComponents.input.state,
+          ...components?.input?.state
+        },
+        disabled: {
+          ...defaultComponents.input.disabled,
+          ...components?.input?.disabled
+        },
+        shortcuts: {
+          ...defaultComponents.input.shortcuts,
+          ...components?.input?.shortcuts
+        },
+        jsxBase: {
+          ...defaultComponents.input.jsxBase,
+          ...components?.input?.jsxBase
+        }
       }
     }
   };
