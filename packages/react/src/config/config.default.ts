@@ -148,6 +148,15 @@ const configDefault = createDefaultConfig({
       shortcuts: {
         width: '100%'
       }
+    },
+    input: {
+      propsDefault: {
+        disabled: false,
+        required: false,
+        type: 'text',
+        size: 'medium',
+        variant: 'filled'
+      }
     }
   }
 });
