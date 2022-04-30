@@ -1,4 +1,5 @@
 import { BtnBaseProps } from '../Button/button.types';
+import { InputBaseProps } from '../Input/input.types';
 import { TextareaBaseProps } from '../Textarea/textarea.types';
 import { ColorsOptions } from '../theme/theme.types';
 import {
@@ -108,11 +109,30 @@ export interface DefaultConfigTextAreaProps {
   jsxBase: ConfigJsxBaseTwoProps;
 }
 
+export interface ConfigInputProps {
+  propsDefault?: InputBaseProps;
+  shortcuts?: ShorcutsCssOptionsProps;
+  sizes: SizesPropsConfig;
+  state?: ElementState;
+  disabled: DisabledPropsConfig;
+  jsxBase: ConfigJsxBaseTwoProps;
+}
+
+export interface DefaultConfigInputProps {
+  propsDefault?: InputBaseProps;
+  shortcuts?: ShorcutsCssOptionsProps;
+  sizes: SizesPropsConfig;
+  state?: ElementState;
+  disabled: DisabledPropsConfig;
+  jsxBase: ConfigJsxBaseTwoProps;
+}
+
 export interface ConfigProps {
   className?: ClassNameProps;
   components?: {
     button?: ConfigButtonProps;
     textarea?: ConfigTextAreaProps;
+    input?: ConfigInputProps;
   };
 }
 
@@ -121,5 +141,6 @@ export interface DefaultConfigProps {
   components: {
     button: DefaultConfigButtonProps;
     textarea: DefaultConfigTextAreaProps;
+    input: DefaultConfigInputProps;
   };
 }
