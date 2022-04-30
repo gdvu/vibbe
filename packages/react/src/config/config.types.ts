@@ -9,12 +9,14 @@ import {
   VariantTwoProps
 } from '../utils/global.types';
 
+// ClassNames config
 export interface ClassNameProps {
   prefix?: boolean;
   prefixName?: string;
   prefixSeparator?: string;
 }
 
+// Sizes config
 export interface SizesOptionsProps {
   width?: string;
   height?: string;
@@ -30,11 +32,13 @@ export interface SizesPropsConfig {
   xlarge?: SizesOptionsProps;
 }
 
+// Disabled config
 export interface DisabledPropsConfig {
   jsx?: string;
   cancelState?: boolean;
 }
 
+// Element state config
 export interface ElementState {
   active?: string;
   focus?: string;
@@ -43,6 +47,7 @@ export interface ElementState {
   visited?: string;
 }
 
+// Variants config
 export interface ConfigVariantOneOptionsProps {
   variant: VariantOneProps;
   color?: ColorProps;
@@ -73,6 +78,7 @@ export interface ConfigJsxBaseTwoProps {
   variants: ConfigVariantTwoProps[];
 }
 
+// Components config
 export interface ConfigButtonProps {
   propsDefault?: BtnBaseProps;
   shortcuts?: ShorcutsCssOptionsProps;
@@ -127,6 +133,7 @@ export interface DefaultConfigInputProps {
   jsxBase: ConfigJsxBaseTwoProps;
 }
 
+// All config
 export interface ConfigProps {
   className?: ClassNameProps;
   components?: {
