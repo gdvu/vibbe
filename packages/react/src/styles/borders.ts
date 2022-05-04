@@ -39,4 +39,12 @@ export interface BorderWidth {
   bwr5?: boolean;
 }
 
-export type Borders = BorderRadius & BorderWidth;
+export interface BorderStyle {
+  bsSolid?: boolean;
+  bsDashed?: boolean;
+  bsDotted?: boolean;
+  bsDouble?: boolean;
+  bsNone?: boolean;
+}
+
+export type Borders = BorderRadius & BorderWidth & BorderStyle;
