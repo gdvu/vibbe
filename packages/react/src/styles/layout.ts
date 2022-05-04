@@ -38,4 +38,45 @@ export interface Height {
   hPorcFull?: boolean;
 }
 
-export type Layout = Height;
+export interface Width {
+  w0?: boolean;
+  w1?: boolean;
+  w2?: boolean;
+  w3?: boolean;
+  w4?: boolean;
+  w5?: boolean;
+  w6?: boolean;
+  w7?: boolean;
+  w8?: boolean;
+  w9?: boolean;
+  w10?: boolean;
+  w11?: boolean;
+  w12?: boolean;
+  w13?: boolean;
+  w14?: boolean;
+  w15?: boolean;
+  w16?: boolean;
+  w17?: boolean;
+  w18?: boolean;
+  w19?: boolean;
+  w20?: boolean;
+  w21?: boolean;
+  w22?: boolean;
+  w23?: boolean;
+  w24?: boolean;
+  w25?: boolean;
+  wView30?: boolean;
+  wView50?: boolean;
+  wViewFull?: boolean;
+  wPorc25?: boolean;
+  wPorc50?: boolean;
+  wPorc75?: boolean;
+  wPorc80?: boolean;
+  wPorc1?: boolean;
+  wPorc2?: boolean;
+  wPorc3?: boolean;
+  wPorcFull?: boolean;
+  wAuto?: boolean;
+}
+
+export type Layout = Height & Width;
