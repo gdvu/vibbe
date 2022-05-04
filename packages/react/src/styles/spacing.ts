@@ -379,3 +379,5 @@ export interface Margin {
   my24?: boolean;
   my25?: boolean;
 }
+
+export type Spacing = Padding & Margin;
