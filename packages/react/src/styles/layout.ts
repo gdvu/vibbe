@@ -80,3 +80,17 @@ export interface Width {
 }
 
 export type Layout = Height & Width;
+
+export interface LayoutCSS {
+  width?: string;
+  height?: string;
+  minWidth?: string;
+  maxWidth?: string;
+  minHeight?: string;
+  maxHeight?: string;
+  display: string;
+  boxSizing: string;
+  overflow: string;
+  overflowX: string;
+  overflowY: string;
+}
