@@ -48,3 +48,33 @@ export interface BorderStyle {
 }
 
 export type Borders = BorderRadius & BorderWidth & BorderStyle;
+
+export interface BordersCSS {
+  border?: string;
+  borderWidth?: string;
+  borderStyle?: string;
+  borderColor?: string;
+
+  borderTop?: string;
+  borderTopWidth?: string;
+  borderTopStyle?: string;
+  borderTopColor?: string;
+
+  borderRight?: string;
+  borderRightWidth?: string;
+  borderRightStyle?: string;
+  borderRightColor?: string;
+
+  borderBottom?: string;
+  borderBottomWidth?: string;
+  borderBottomStyle?: string;
+  borderBottomColor?: string;
+
+  borderLeft?: string;
+  borderLeftWidth?: string;
+  borderLeftStyle?: string;
+  borderLeftColor?: string;
+
+  borderX?: string;
+  borderY?: string;
+}
