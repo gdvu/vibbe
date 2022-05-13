@@ -19,3 +19,17 @@ export interface FontWeight {
 }
 
 export type Typography = FontSize & FontWeight;
+
+export type TypographyCSS = {
+  fontFamily?: string;
+  fontSize?: string;
+  fontWeight?: string;
+  lineHeight?: string;
+  letterSpacing?: string;
+  textAlign?: string;
+  textShadow?: string;
+  fontStyle?: string;
+  textTransform?: string;
+  textDecoration?: string;
+  color?: string;
+};
