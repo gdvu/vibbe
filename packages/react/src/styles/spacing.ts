@@ -381,3 +381,21 @@ export interface Margin {
 }
 
 export type Spacing = Padding & Margin;
+
+export type SpacingCSS = {
+  margin?: string;
+  marginTop?: string;
+  marginRight?: string;
+  marginBottom?: string;
+  marginLeft?: string;
+  marginX?: string;
+  marginY?: string;
+
+  padding?: string;
+  paddingTop?: string;
+  paddingRight?: string;
+  paddingBottom?: string;
+  paddingLeft?: string;
+  paddingX?: string;
+  paddingY?: string;
+};
