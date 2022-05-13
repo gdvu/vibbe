@@ -1,15 +1,11 @@
-export type DisplayOptions =
-  | 'inline'
-  | 'block'
-  | 'flex'
-  | 'grid'
-  | 'inline-block'
-  | 'inline-flex'
-  | 'inline-grid';
+import { BackgroundsCSS } from './background';
+import { BordersCSS } from './borders';
+import { LayoutCSS } from './layout';
+import { SpacingCSS } from './spacing';
+import { TypographyCSS } from './typography';
 
-export interface VibbeCss {
-  display?: DisplayOptions;
-  width?: string;
-  height?: string;
-  radius?: string;
-}
+export type StyledCSS = SpacingCSS &
+  TypographyCSS &
+  BordersCSS &
+  LayoutCSS &
+  BackgroundsCSS;
