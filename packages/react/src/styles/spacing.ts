@@ -399,3 +399,38 @@ export type SpacingCSS = {
   paddingX?: string;
   paddingY?: string;
 };
+
+export const spacingCss = (vcs?: SpacingCSS) => {
+  return `
+    ${vcs?.padding ? `padding: ${vcs?.padding};` : ''}
+    ${vcs?.paddingTop ? `padding-top: ${vcs?.paddingTop};` : ''}
+    ${vcs?.paddingRight ? `padding-right: ${vcs?.paddingRight};` : ''}
+    ${vcs?.paddingBottom ? `padding-bottom: ${vcs?.paddingBottom};` : ''}
+    ${vcs?.paddingLeft ? `padding-left: ${vcs?.paddingLeft};` : ''}
+    ${
+      vcs?.paddingX
+        ? `padding-left: ${vcs?.paddingX};padding-right: ${vcs?.paddingX};`
+        : ''
+    }
+    ${
+      vcs?.paddingY
+        ? `padding-top: ${vcs?.paddingY};padding-bottom: ${vcs?.paddingY};`
+        : ''
+    }
+    ${vcs?.margin ? `margin: ${vcs?.margin};` : ''}
+    ${vcs?.marginTop ? `margin-top: ${vcs?.marginTop};` : ''}
+    ${vcs?.marginRight ? `margin-right: ${vcs?.marginRight};` : ''}
+    ${vcs?.marginBottom ? `margin-bottom: ${vcs?.marginBottom};` : ''}
+    ${vcs?.marginLeft ? `margin-left: ${vcs?.marginLeft};` : ''}
+    ${
+      vcs?.marginX
+        ? `margin-left: ${vcs?.marginX};margin-right: ${vcs?.marginX};`
+        : ''
+    }
+    ${
+      vcs?.marginY
+        ? `margin-top: ${vcs?.marginY};margin-bottom: ${vcs?.marginY};`
+        : ''
+    }
+  `;
+};
