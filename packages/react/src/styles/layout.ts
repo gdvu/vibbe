@@ -88,9 +88,10 @@ export interface LayoutCSS {
   maxWidth?: string;
   minHeight?: string;
   maxHeight?: string;
-  display: string;
-  boxSizing: string;
-  overflow: string;
-  overflowX: string;
-  overflowY: string;
+  display?: string;
+  boxSizing?: string;
+  boxShadow?: string;
+  overflow?: string;
+  overflowX?: string;
+  overflowY?: string;
 }
