@@ -85,3 +85,52 @@ export interface BordersCSS {
   borderWidthY?: string;
   borderColorY?: string;
 }
+
+export const borderCss = (vcs?: BordersCSS) => {
+  return `
+    ${vcs?.border ? `border: ${vcs?.border};` : ''}
+    ${vcs?.borderStyle ? `border-style: ${vcs?.borderStyle};` : ''}
+    ${vcs?.borderWidth ? `border-width: ${vcs?.borderWidth};` : ''}
+    ${vcs?.borderColor ? `border-color: ${vcs?.borderColor};` : ''}
+    ${
+      vcs?.borderX
+        ? `border-left: ${vcs?.borderX};border-right: ${vcs?.borderX};`
+        : ''
+    }
+    ${
+      vcs?.borderStyleX
+        ? `border-left-style: ${vcs?.borderStyleX};border-right-style: ${vcs?.borderStyleX};`
+        : ''
+    }
+    ${
+      vcs?.borderWidthX
+        ? `border-left-width: ${vcs?.borderWidthX};border-right-width: ${vcs?.borderWidthX};`
+        : ''
+    }
+    ${
+      vcs?.borderColorX
+        ? `border-left-color: ${vcs?.borderColorX};border-right-color: ${vcs?.borderColorX};`
+        : ''
+    }
+    ${
+      vcs?.borderY
+        ? `border-top: ${vcs?.borderY};border-bottom: ${vcs?.borderY};`
+        : ''
+    }
+    ${
+      vcs?.borderStyleY
+        ? `border-top-style: ${vcs?.borderStyleY};border-bottom-style: ${vcs?.borderStyleY};`
+        : ''
+    }
+    ${
+      vcs?.borderWidthY
+        ? `border-top-width: ${vcs?.borderWidthY};border-bottom-width: ${vcs?.borderWidthY};`
+        : ''
+    }
+    ${
+      vcs?.borderColorY
+        ? `border-top-color: ${vcs?.borderColorY};border-bottom-color: ${vcs?.borderColorY};`
+        : ''
+    }
+  `;
+};
