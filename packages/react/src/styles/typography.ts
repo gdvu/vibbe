@@ -33,3 +33,19 @@ export type TypographyCSS = {
   textDecoration?: string;
   color?: string;
 };
+
+export const typographyCss = (vcs?: TypographyCSS) => {
+  return `
+    ${vcs?.fontFamily ? `font-family: ${vcs?.fontFamily};` : ''}
+    ${vcs?.fontSize ? `font-size: ${vcs?.fontSize};` : ''}
+    ${vcs?.fontWeight ? `font-weight: ${vcs?.fontWeight};` : ''}
+    ${vcs?.lineHeight ? `line-height: ${vcs?.lineHeight};` : ''}
+    ${vcs?.letterSpacing ? `letter-spacing: ${vcs?.letterSpacing};` : ''}
+    ${vcs?.textAlign ? `text-align: ${vcs?.textAlign};` : ''}
+    ${vcs?.textShadow ? `text-shadow: ${vcs?.textShadow};` : ''}
+    ${vcs?.fontStyle ? `font-style: ${vcs?.fontStyle};` : ''}
+    ${vcs?.textTransform ? `text-transform: ${vcs?.textTransform};` : ''}
+    ${vcs?.textDecoration ? `text-decoration: ${vcs?.textDecoration};` : ''}
+    ${vcs?.color ? `color: ${vcs?.color};` : ''}
+  `;
+};
