@@ -95,3 +95,19 @@ export interface LayoutCSS {
   overflowX?: string;
   overflowY?: string;
 }
+
+export const layoutCss = (vcs?: LayoutCSS) => {
+  return `
+    ${vcs?.width ? `width: ${vcs?.width};` : ''}
+    ${vcs?.height ? `height: ${vcs?.height};` : ''}
+    ${vcs?.maxWidth ? `max-width: ${vcs?.maxWidth};` : ''}
+    ${vcs?.maxHeight ? `max-height: ${vcs?.maxHeight};` : ''}
+    ${vcs?.minWidth ? `min-width: ${vcs?.minWidth};` : ''}
+    ${vcs?.minHeight ? `min-height: ${vcs?.minHeight};` : ''}
+    ${vcs?.display ? `display: ${vcs?.display};` : ''}
+    ${vcs?.boxSizing ? `box-sizing: ${vcs?.boxSizing};` : ''}
+    ${vcs?.boxShadow ? `box-shadow: ${vcs?.boxShadow};` : ''}
+    ${vcs?.overflowX ? `overflox-x: ${vcs?.overflowX};` : ''}
+    ${vcs?.overflowY ? `overflow-y: ${vcs?.overflowY};` : ''}
+  `;
+};
