@@ -1,3 +1,4 @@
+import { AllStylesCSS, StylesCSS } from '.';
 import { backgroundCss, BackgroundsCSS } from './background';
 import { borderCss, BordersCSS } from './borders';
 import { layoutCss, LayoutCSS } from './layout';
@@ -20,23 +21,23 @@ export interface StyledCSSElement {
   _visited?: StyledCSSBox;
 }
 
-export type StylesCSS = StyledCSSBox & StyledCSSElement;
-
 export interface DinamicProp {
   [key: string]: StylesCSS;
+}
+
+// sizes styled css
+export interface StylesSizes {
+  sizes?: DinamicProp;
+}
+
+// disable styled css
+export interface StylesDisable {
+  disabled?: StylesCSS;
 }
 
 // variant styled css
 export interface StylesVariant {
   variants?: DinamicProp;
-}
-
-// all styled css
-export type AllStylesCSS = StylesCSS & StylesVariant;
-
-// all types css
-export interface CSS {
-  styled?: AllStylesCSS;
 }
 
 export const styledCss = (vcs?: AllStylesCSS) => {
