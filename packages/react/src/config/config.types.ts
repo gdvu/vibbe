@@ -1,5 +1,6 @@
 import { BtnBaseProps } from '../Button/button.types';
 import { InputBaseProps } from '../Input/input.types';
+import { AllStylesCSS } from '../styles';
 import { TextareaBaseProps } from '../Textarea/textarea.types';
 import { ColorsOptions } from '../theme/theme.types';
 import {
@@ -86,6 +87,7 @@ export interface ConfigButtonProps {
   state?: ElementState;
   disabled?: DisabledPropsConfig;
   jsxBase?: ConfigJsxBaseProps;
+  styled?: AllStylesCSS;
 }
 
 export interface DefaultConfigButtonProps {
@@ -95,6 +97,7 @@ export interface DefaultConfigButtonProps {
   state?: ElementState;
   disabled: DisabledPropsConfig;
   jsxBase: ConfigJsxBaseProps;
+  styled?: AllStylesCSS;
 }
 
 export interface ConfigTextAreaProps {
