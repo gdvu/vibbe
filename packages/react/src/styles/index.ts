@@ -14,3 +14,5 @@ export type AllStylesCSS = StylesCSS & StylesVariant;
 export interface CSS {
   styled?: AllStylesCSS;
 }
+
+export { default } from './core';

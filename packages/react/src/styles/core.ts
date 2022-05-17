@@ -42,7 +42,7 @@ export interface StylesVariant {
   variants?: DinamicProp;
 }
 
-export const styledCss = (vcs?: AllStylesCSS) => {
+const styledCss = (vcs?: AllStylesCSS) => {
   return `
     ${layoutCss(vcs) ?? ''}
     ${flexboxCss(vcs) ?? ''}
@@ -53,3 +53,5 @@ export const styledCss = (vcs?: AllStylesCSS) => {
     ${typographyCss(vcs) ?? ''}
   `;
 };
+
+export default styledCss;
