@@ -1,6 +1,7 @@
 import { AllStylesCSS, StylesCSS } from '.';
 import { backgroundCss, BackgroundsCSS } from './background';
 import { borderCss, BordersCSS } from './borders';
+import { flexboxCss, FlexBoxCSS } from './flexbox';
 import { layoutCss, LayoutCSS } from './layout';
 import { radiusCss, RadiusCSS } from './radius';
 import { spacingCss, SpacingCSS } from './spacing';
@@ -12,7 +13,8 @@ export type StyledCSSBox = SpacingCSS &
   BordersCSS &
   RadiusCSS &
   LayoutCSS &
-  BackgroundsCSS;
+  BackgroundsCSS &
+  FlexBoxCSS;
 
 export interface StyledCSSElement {
   _hover?: StyledCSSBox;
@@ -43,6 +45,7 @@ export interface StylesVariant {
 export const styledCss = (vcs?: AllStylesCSS) => {
   return `
     ${layoutCss(vcs) ?? ''}
+    ${flexboxCss(vcs) ?? ''}
     ${spacingCss(vcs) ?? ''}
     ${backgroundCss(vcs) ?? ''}
     ${borderCss(vcs) ?? ''}
