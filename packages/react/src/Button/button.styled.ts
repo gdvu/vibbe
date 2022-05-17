@@ -1,5 +1,6 @@
 import css from 'styled-jsx/css';
-import { AllStylesCSS } from '../styles';
+import styledCss, { AllStylesCSS } from '../styles';
+import { clearCss } from '../styles/utils';
 import { ColorProps, SizesProps, VariantOneProps } from '../utils/global.types';
 
 export const getStyledButton = (
@@ -14,8 +15,11 @@ export const getStyledButton = (
 ) => {
   const { color, size, disabled, variant } = basePropsCss;
 
+  const cssBase = clearCss(styledCss(styled));
+
   return css.resolve`
     ${`.${prefix}button`} {
+      ${cssBase}
     }
 
     ${`.${prefix}button-text`} {
