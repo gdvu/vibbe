@@ -86,9 +86,14 @@ const defineConfigVariantTwo = (options: DefineConfigVariantTwoProps) => {
   return jsxInit;
 };
 
+const objBoolean = (obj: object): boolean => {
+  return Object.entries(obj).length === 0;
+};
+
 export {
   defineClassNamePrefix,
   defineSizes,
   defineConfigVariant,
-  defineConfigVariantTwo
+  defineConfigVariantTwo,
+  objBoolean
 };
