@@ -3,8 +3,10 @@ import { backgroundCss, BackgroundsCSS } from './background';
 import { borderCss, BordersCSS } from './borders';
 import { flexboxCss, FlexBoxCSS } from './flexbox';
 import { layoutCss, LayoutCSS } from './layout';
+import { positioningCss, PositioningCSS } from './positioning';
 import { radiusCss, RadiusCSS } from './radius';
 import { spacingCss, SpacingCSS } from './spacing';
+import { transformCss, TransformCSS } from './transform';
 import { typographyCss, TypographyCSS } from './typography';
 
 // styled css
@@ -14,6 +16,8 @@ export type StyledCSSBox = SpacingCSS &
   RadiusCSS &
   LayoutCSS &
   BackgroundsCSS &
+  TransformCSS &
+  PositioningCSS &
   FlexBoxCSS;
 
 export interface StyledCSSElement {
@@ -46,11 +50,13 @@ const styledCss = (vcs?: AllStylesCSS) => {
   return `
     ${layoutCss(vcs) ?? ''}
     ${flexboxCss(vcs) ?? ''}
+    ${positioningCss(vcs) ?? ''}
     ${spacingCss(vcs) ?? ''}
     ${backgroundCss(vcs) ?? ''}
     ${borderCss(vcs) ?? ''}
     ${radiusCss(vcs) ?? ''}
     ${typographyCss(vcs) ?? ''}
+     ${transformCss(vcs) ?? ''}
   `;
 };
 
