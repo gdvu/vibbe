@@ -90,10 +90,20 @@ const objBoolean = (obj: object): boolean => {
   return Object.entries(obj).length === 0;
 };
 
+const trimIn = (str: string): string => {
+  return str.replace(/\s+/gi, ' ');
+};
+
+const trimAll = (str: string): string => {
+  return str.replace(/\s+/gi, ' ').trim();
+};
+
 export {
   defineClassNamePrefix,
   defineSizes,
   defineConfigVariant,
   defineConfigVariantTwo,
-  objBoolean
+  objBoolean,
+  trimIn,
+  trimAll
 };
