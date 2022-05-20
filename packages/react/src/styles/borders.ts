@@ -92,6 +92,46 @@ export const borderCss = (vcs?: BordersCSS) => {
     ${vcs?.borderStyle ? `border-style: ${vcs?.borderStyle};` : ''}
     ${vcs?.borderWidth ? `border-width: ${vcs?.borderWidth};` : ''}
     ${vcs?.borderColor ? `border-color: ${vcs?.borderColor};` : ''}
+    ${vcs?.borderTop ? `border-top: ${vcs?.borderTop};` : ''}
+    ${vcs?.borderTopStyle ? `border-top-style: ${vcs?.borderTopStyle};` : ''}
+    ${vcs?.borderTopWidth ? `border-top-width: ${vcs?.borderTopWidth};` : ''}
+    ${vcs?.borderTopColor ? `border-top-color: ${vcs?.borderTopColor};` : ''}
+    ${vcs?.borderBottom ? `border-bottom: ${vcs?.borderBottom};` : ''}
+    ${vcs?.borderRight ? `border-right: ${vcs?.borderRight};` : ''}
+    ${
+      vcs?.borderRightStyle
+        ? `border-right-style: ${vcs?.borderRightStyle};`
+        : ''
+    }
+    ${
+      vcs?.borderRightWidth
+        ? `border-right-width: ${vcs?.borderRightWidth};`
+        : ''
+    }
+    ${
+      vcs?.borderRightColor
+        ? `border-right-color: ${vcs?.borderRightColor};`
+        : ''
+    }
+    ${
+      vcs?.borderBottomStyle
+        ? `border-bottom-style: ${vcs?.borderBottomStyle};`
+        : ''
+    }
+    ${
+      vcs?.borderBottomWidth
+        ? `border-bottom-width: ${vcs?.borderBottomWidth};`
+        : ''
+    }
+    ${
+      vcs?.borderBottomColor
+        ? `border-bottom-color: ${vcs?.borderBottomColor};`
+        : ''
+    }
+    ${vcs?.borderLeft ? `border-left: ${vcs?.borderLeft};` : ''}
+    ${vcs?.borderLeftStyle ? `border-left-style: ${vcs?.borderLeftStyle};` : ''}
+    ${vcs?.borderLeftWidth ? `border-left-width: ${vcs?.borderLeftWidth};` : ''}
+    ${vcs?.borderLeftColor ? `border-left-color: ${vcs?.borderLeftColor};` : ''}
     ${
       vcs?.borderX
         ? `border-left: ${vcs?.borderX};border-right: ${vcs?.borderX};`
