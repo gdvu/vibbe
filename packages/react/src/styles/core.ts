@@ -27,6 +27,7 @@ export interface StyledCSSElement {
   _visited?: StyledCSSBox;
   _after?: StyledCSSBox;
   _before?: StyledCSSBox;
+  _placeholder?: StyledCSSBox;
 }
 
 export interface DinamicProp {
