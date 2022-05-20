@@ -25,6 +25,8 @@ export interface StyledCSSElement {
   _focus?: StyledCSSBox;
   _active?: StyledCSSBox;
   _visited?: StyledCSSBox;
+  _after?: StyledCSSBox;
+  _before?: StyledCSSBox;
 }
 
 export interface DinamicProp {
