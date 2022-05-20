@@ -13,6 +13,10 @@ export type StylesCSS = StyledCSSBox &
 
 export type CsxProps = StyledCSSBox & StyledCSSElement;
 
+export interface StyledTwo extends StyledCSSElement {
+  base?: StyledCSSBox;
+}
+
 // all styled css
 export type AllStylesCSS = StylesCSS & StylesVariant;
 
