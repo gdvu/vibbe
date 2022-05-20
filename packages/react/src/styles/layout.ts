@@ -107,7 +107,8 @@ export const layoutCss = (vcs?: LayoutCSS) => {
     ${vcs?.display ? `display: ${vcs?.display};` : ''}
     ${vcs?.boxSizing ? `box-sizing: ${vcs?.boxSizing};` : ''}
     ${vcs?.boxShadow ? `box-shadow: ${vcs?.boxShadow};` : ''}
-    ${vcs?.overflowX ? `overflox-x: ${vcs?.overflowX};` : ''}
+    ${vcs?.overflow ? `overflow: ${vcs?.overflow};` : ''}
+    ${vcs?.overflowX ? `overflow-x: ${vcs?.overflowX};` : ''}
     ${vcs?.overflowY ? `overflow-y: ${vcs?.overflowY};` : ''}
   `;
 };
