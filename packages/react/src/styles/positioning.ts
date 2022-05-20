@@ -13,6 +13,7 @@ export const positioningCss = (vcs?: PositioningCSS) => {
     ${vcs?.top ? `top: ${vcs?.top};` : ''}
     ${vcs?.right ? `right: ${vcs?.right};` : ''}
     ${vcs?.left ? `left: ${vcs?.left};` : ''}
+    ${vcs?.bottom ? `bottom: ${vcs?.bottom};` : ''}
     ${vcs?.inset ? `inset: ${vcs?.inset};` : ''}
   `;
 };
