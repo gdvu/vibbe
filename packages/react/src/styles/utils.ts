@@ -141,3 +141,16 @@ export const unionStyled = (
     _placeholder
   };
 };
+
+export const classNameElements = (styled: StyledTwo, className: string) => {
+  const disabled = 'undisabled291';
+  const base = styled.base ? className : disabled;
+  const hover = styled._hover ? className : disabled;
+  const active = styled._active ? className : disabled;
+  const focus = styled._focus ? className : disabled;
+  const visited = styled._visited ? className : disabled;
+  const after = styled._after ? className : disabled;
+  const before = styled._before ? className : disabled;
+  const placeholder = styled._placeholder ? className : disabled;
+  return { hover, active, focus, visited, base, after, before, placeholder };
+};
