@@ -11,12 +11,15 @@ export type StylesCSS = StyledCSSBox &
   StylesSizes &
   StylesDisable;
 
+export type CsxProps = StyledCSSBox & StyledCSSElement;
+
 // all styled css
 export type AllStylesCSS = StylesCSS & StylesVariant;
 
 // all types css
 export interface CSS {
   styled?: AllStylesCSS;
+  csx?: CsxProps;
 }
 
 export { default } from './core';
