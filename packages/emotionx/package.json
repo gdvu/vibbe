@@ -1,0 +1,19 @@
+{
+  "name": "@vibbe/emotionx",
+  "version": "1.0.0-alpha.1",
+  "license": "MIT",
+  "author": {
+    "name": "Moises Machuca Valverde",
+    "email": "rmoimv@gmail.com"
+  },
+  "keywords": [
+    "react",
+    "css-in-js",
+    "styles",
+    "css",
+    "emotion",
+    "emotionx"
+  ],
+  "sideEffects": false,
+  "packageManager": "yarn@3.2.1"
+}
